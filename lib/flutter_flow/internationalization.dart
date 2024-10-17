@@ -276,14 +276,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'Di bawah ialah ringkasan aktiviti pasukan anda.',
     },
     '28ggdsf3': {
-      'en': '50%',
+      'en': '',
       'id': '',
       'ms': '',
     },
-    'd0r4w3cc': {
-      'en': '24',
-      'id': '24',
-      'ms': '24',
+    'jqevo63s': {
+      'en': 'free Space in google drive',
+      'id': 'pelanggan baru',
+      'ms': 'pelanggan baru',
+    },
+    '87avgrz9': {
+      'en': '% ',
+      'id': '',
+      'ms': '',
+    },
+    'hwo4p4p4': {
+      'en': 'of free space on your drive .',
+      'id': '',
+      'ms': '',
     },
     '8vot9bzj': {
       'en': 'New Contracts',

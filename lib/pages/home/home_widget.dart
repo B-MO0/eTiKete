@@ -195,6 +195,46 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
+      'textOnPageLoadAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(40.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation6': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(40.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
       'containerOnPageLoadAnimation3': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -216,86 +256,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         ],
       ),
       'containerOnPageLoadAnimation4': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(0.8, 1.0),
-            end: Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'textOnPageLoadAnimation5': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 220.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 220.0.ms,
-            duration: 600.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 220.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(20.0, 0.0),
-            end: Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'textOnPageLoadAnimation6': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 240.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 240.0.ms,
-            duration: 600.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 240.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(40.0, 0.0),
-            end: Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation5': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(120.0, 0.0),
-            end: Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation6': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
@@ -355,7 +315,87 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
+      'containerOnPageLoadAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(120.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation6': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.8, 1.0),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
       'textOnPageLoadAnimation9': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 220.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 220.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 220.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(20.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation10': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 240.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 240.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 240.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(40.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation11': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 600.ms),
@@ -455,7 +495,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation10': AnimationInfo(
+      'textOnPageLoadAnimation12': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1600.ms),
@@ -475,7 +515,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation11': AnimationInfo(
+      'textOnPageLoadAnimation13': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1600.ms),
@@ -515,7 +555,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation12': AnimationInfo(
+      'textOnPageLoadAnimation14': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 200.ms),
@@ -535,7 +575,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation13': AnimationInfo(
+      'textOnPageLoadAnimation15': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 180.ms),
@@ -595,7 +635,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation14': AnimationInfo(
+      'textOnPageLoadAnimation16': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 200.ms),
@@ -615,7 +655,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation15': AnimationInfo(
+      'textOnPageLoadAnimation17': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 180.ms),
@@ -675,7 +715,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation16': AnimationInfo(
+      'textOnPageLoadAnimation18': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 200.ms),
@@ -695,7 +735,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation17': AnimationInfo(
+      'textOnPageLoadAnimation19': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 180.ms),
@@ -755,7 +795,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation18': AnimationInfo(
+      'textOnPageLoadAnimation20': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 200.ms),
@@ -775,7 +815,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation19': AnimationInfo(
+      'textOnPageLoadAnimation21': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 180.ms),
@@ -815,7 +855,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           ),
         ],
       ),
-      'textOnPageLoadAnimation20': AnimationInfo(
+      'textOnPageLoadAnimation22': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
@@ -879,7 +919,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             FlutterFlowTheme.of(context).displaySmallFamily),
                       ),
                 ).animateOnPageLoad(
-                    animationsMap['textOnPageLoadAnimation20']!),
+                    animationsMap['textOnPageLoadAnimation22']!),
                 actions: [],
                 centerTitle: false,
                 elevation: 0.0,
@@ -1129,8 +1169,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               0.0, 0.0),
                                                       child:
                                                           CircularPercentIndicator(
-                                                        percent: 0.5,
-                                                        radius: 30.0,
+                                                        percent: 0.976,
+                                                        radius: 35.5,
                                                         lineWidth: 5.0,
                                                         animation: true,
                                                         animateFromLastPercent:
@@ -1143,36 +1183,18 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent4,
-                                                        center: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '28ggdsf3' /* 50% */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .headlineSmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily,
-                                                                fontSize: 18.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
-                                                              ),
-                                                        ),
                                                       ),
                                                     ).animateOnPageLoad(
                                                         animationsMap[
                                                             'containerOnPageLoadAnimation2']!),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsets.all(12.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -1183,59 +1205,137 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            FFAppState()
-                                                                .freeSpace
-                                                                .toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodySmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodySmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
-                                                                ),
-                                                          ).animateOnPageLoad(
-                                                              animationsMap[
-                                                                  'textOnPageLoadAnimation3']!),
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
+                                                                        7.0,
                                                                         0.0,
-                                                                        8.0,
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                'd0r4w3cc' /* 24 */,
+                                                                'jqevo63s' /* free Space in google drive */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .displaySmall
+                                                                  .bodySmall
                                                                   .override(
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
-                                                                            .displaySmallFamily,
+                                                                            .bodySmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
                                                                             .asMap()
                                                                         .containsKey(
-                                                                            FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
                                                                   ),
                                                             ).animateOnPageLoad(
                                                                 animationsMap[
-                                                                    'textOnPageLoadAnimation4']!),
+                                                                    'textOnPageLoadAnimation3']!),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  FFAppState()
+                                                                      .freeSpace
+                                                                      .toString(),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).displaySmallFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                      ),
+                                                                ).animateOnPageLoad(
+                                                                    animationsMap[
+                                                                        'textOnPageLoadAnimation4']!),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    '87avgrz9' /* %  */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).displaySmallFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                      ),
+                                                                ).animateOnPageLoad(
+                                                                    animationsMap[
+                                                                        'textOnPageLoadAnimation5']!),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'hwo4p4p4' /* of free space on your drive . */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).displaySmallFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        fontSize:
+                                                                            28.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                      ),
+                                                                ).animateOnPageLoad(
+                                                                    animationsMap[
+                                                                        'textOnPageLoadAnimation6']!),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
@@ -1362,7 +1462,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 ),
                                                           ).animateOnPageLoad(
                                                               animationsMap[
-                                                                  'textOnPageLoadAnimation5']!),
+                                                                  'textOnPageLoadAnimation7']!),
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -1393,7 +1493,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   ),
                                                             ).animateOnPageLoad(
                                                                 animationsMap[
-                                                                    'textOnPageLoadAnimation6']!),
+                                                                    'textOnPageLoadAnimation8']!),
                                                           ),
                                                         ],
                                                       ),
@@ -1520,7 +1620,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 ),
                                                           ).animateOnPageLoad(
                                                               animationsMap[
-                                                                  'textOnPageLoadAnimation7']!),
+                                                                  'textOnPageLoadAnimation9']!),
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -1551,7 +1651,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   ),
                                                             ).animateOnPageLoad(
                                                                 animationsMap[
-                                                                    'textOnPageLoadAnimation8']!),
+                                                                    'textOnPageLoadAnimation10']!),
                                                           ),
                                                         ],
                                                       ),
@@ -1590,7 +1690,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 .titleMediumFamily),
                                   ),
                             ).animateOnPageLoad(
-                                animationsMap['textOnPageLoadAnimation9']!),
+                                animationsMap['textOnPageLoadAnimation11']!),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -1692,7 +1792,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                       .headlineMediumFamily),
                                             ),
                                       ).animateOnPageLoad(animationsMap[
-                                          'textOnPageLoadAnimation10']!),
+                                          'textOnPageLoadAnimation12']!),
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
@@ -1712,7 +1812,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                         .titleSmallFamily),
                                           ),
                                     ).animateOnPageLoad(animationsMap[
-                                        'textOnPageLoadAnimation11']!),
+                                        'textOnPageLoadAnimation13']!),
                                   ],
                                 ),
                               ),
@@ -1823,7 +1923,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               ),
                                                         ).animateOnPageLoad(
                                                             animationsMap[
-                                                                'textOnPageLoadAnimation12']!),
+                                                                'textOnPageLoadAnimation14']!),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1855,7 +1955,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 ),
                                                           ).animateOnPageLoad(
                                                               animationsMap[
-                                                                  'textOnPageLoadAnimation13']!),
+                                                                  'textOnPageLoadAnimation15']!),
                                                         ),
                                                       ],
                                                     ),
@@ -2050,7 +2150,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               ),
                                                         ).animateOnPageLoad(
                                                             animationsMap[
-                                                                'textOnPageLoadAnimation14']!),
+                                                                'textOnPageLoadAnimation16']!),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -2082,7 +2182,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 ),
                                                           ).animateOnPageLoad(
                                                               animationsMap[
-                                                                  'textOnPageLoadAnimation15']!),
+                                                                  'textOnPageLoadAnimation17']!),
                                                         ),
                                                       ],
                                                     ),
@@ -2275,7 +2375,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       .titleMediumFamily),
                                                         ),
                                                   ).animateOnPageLoad(animationsMap[
-                                                      'textOnPageLoadAnimation16']!),
+                                                      'textOnPageLoadAnimation18']!),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -2305,7 +2405,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               ),
                                                     ).animateOnPageLoad(
                                                         animationsMap[
-                                                            'textOnPageLoadAnimation17']!),
+                                                            'textOnPageLoadAnimation19']!),
                                                   ),
                                                 ],
                                               ),
@@ -2483,7 +2583,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       .titleMediumFamily),
                                                         ),
                                                   ).animateOnPageLoad(animationsMap[
-                                                      'textOnPageLoadAnimation18']!),
+                                                      'textOnPageLoadAnimation20']!),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -2513,7 +2613,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               ),
                                                     ).animateOnPageLoad(
                                                         animationsMap[
-                                                            'textOnPageLoadAnimation19']!),
+                                                            'textOnPageLoadAnimation21']!),
                                                   ),
                                                 ],
                                               ),
