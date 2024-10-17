@@ -29,13 +29,10 @@ class FFAppState extends ChangeNotifier {
       _RefreshToken = prefs.getString('ff_RefreshToken') ?? _RefreshToken;
     });
     _safeInit(() {
-      _limit = prefs.getString('ff_limit') ?? _limit;
+      _limit = prefs.getDouble('ff_limit') ?? _limit;
     });
     _safeInit(() {
-      _usage = prefs.getString('ff_usage') ?? _usage;
-    });
-    _safeInit(() {
-      _FreeSpace = prefs.getString('ff_FreeSpace') ?? _FreeSpace;
+      _usage = prefs.getDouble('ff_usage') ?? _usage;
     });
   }
 
@@ -73,25 +70,24 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_RefreshToken', value);
   }
 
-  String _limit = '';
-  String get limit => _limit;
-  set limit(String value) {
+  double _limit = 0.0;
+  double get limit => _limit;
+  set limit(double value) {
     _limit = value;
-    prefs.setString('ff_limit', value);
+    prefs.setDouble('ff_limit', value);
   }
 
-  String _usage = '';
-  String get usage => _usage;
-  set usage(String value) {
+  double _usage = 0.0;
+  double get usage => _usage;
+  set usage(double value) {
     _usage = value;
-    prefs.setString('ff_usage', value);
+    prefs.setDouble('ff_usage', value);
   }
 
-  String _FreeSpace = '';
-  String get FreeSpace => _FreeSpace;
-  set FreeSpace(String value) {
-    _FreeSpace = value;
-    prefs.setString('ff_FreeSpace', value);
+  double _freeSpace = 0.0;
+  double get freeSpace => _freeSpace;
+  set freeSpace(double value) {
+    _freeSpace = value;
   }
 }
 
