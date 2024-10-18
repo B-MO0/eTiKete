@@ -89,6 +89,12 @@ class FFAppState extends ChangeNotifier {
   set freeSpace(double value) {
     _freeSpace = value;
   }
+
+  double _takenSpace = 0.0;
+  double get takenSpace => _takenSpace;
+  set takenSpace(double value) {
+    _takenSpace = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

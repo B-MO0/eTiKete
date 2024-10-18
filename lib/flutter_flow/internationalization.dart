@@ -286,7 +286,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'pelanggan baru',
     },
     '87avgrz9': {
-      'en': '% ',
+      'en': ' % ',
       'id': '',
       'ms': '',
     },
@@ -296,22 +296,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     '8vot9bzj': {
-      'en': 'New Contracts',
+      'en': 'Events',
       'id': 'Kontrak Baru',
       'ms': 'Kontrak Baru',
     },
     '463rfkem': {
-      'en': '3,200',
+      'en': '0',
       'id': '3.200',
       'ms': '3,200',
     },
     'saxskj92': {
-      'en': 'Expired Contracts',
+      'en': 'Tickets',
       'id': 'Kontrak Kedaluwarsa',
       'ms': 'Kontrak Tamat',
     },
     '2wlrr5lg': {
-      'en': '4300',
+      'en': '0',
       'id': '4300',
       'ms': '4300',
     },

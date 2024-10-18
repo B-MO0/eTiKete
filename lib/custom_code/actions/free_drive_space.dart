@@ -14,6 +14,7 @@ Future<void> freeDriveSpace(
   // Ensure limit is not zero to avoid division by zero
   if (limit <= 0) {
     FFAppState().freeSpace = 0;
+    FFAppState().takenSpace = 0;
     return;
   }
 
@@ -23,10 +24,17 @@ Future<void> freeDriveSpace(
   // Calculate percentage of free space
   double freeSpacePercentage = (freeSpaceBytes / limit) * 100;
 
-  // Round to two decimal places
+  // Round free space percentage to two decimal places
   double roundedFreeSpace =
       double.parse(freeSpacePercentage.toStringAsFixed(2));
 
-  // Store the result in FFAppState().freeSpace
+  // Calculate taken space as a decimal (number less than 1)
+  double takenSpaceDecimal = usage / limit;
+
+  // Round taken space to three decimal places
+  double roundedTakenSpace = double.parse(takenSpaceDecimal.toStringAsFixed(3));
+
+  // Store the results in FFAppState()
   FFAppState().freeSpace = roundedFreeSpace;
+  FFAppState().takenSpace = roundedTakenSpace;
 }

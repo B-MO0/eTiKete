@@ -9,6 +9,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
@@ -42,19 +43,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         );
 
         if ((_model.storagedata?.succeeded ?? true)) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'good',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 22.0,
-                ),
-              ),
-              duration: Duration(milliseconds: 4000),
-              backgroundColor: FlutterFlowTheme.of(context).secondary,
-            ),
-          );
           FFAppState().limit = getJsonField(
             (_model.storagedata?.jsonBody ?? ''),
             r'''$.storageQuota.limit''',
@@ -70,7 +58,17 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           );
         }
       } else {
-        context.pushNamed('Main_profilePage');
+        _model.accesstoken = await GetAccessTokenFromRefreshTokenCall.call(
+          refreshToken: FFAppState().RefreshToken,
+        );
+
+        if ((_model.accesstoken?.succeeded ?? true)) {
+          FFAppState().AccessToken = getJsonField(
+            (_model.accesstoken?.jsonBody ?? ''),
+            r'''$.access_token''',
+          ).toString().toString();
+          safeSetState(() {});
+        }
       }
     });
 
@@ -983,7 +981,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                   Expanded(
                     flex: 10,
                     child: SingleChildScrollView(
-                      primary: false,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1156,8 +1153,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Container(
-                                                      width: 60.0,
-                                                      height: 60.0,
+                                                      width: 84.0,
+                                                      height: 84.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -1167,22 +1164,44 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                       alignment:
                                                           AlignmentDirectional(
                                                               0.0, 0.0),
-                                                      child:
-                                                          CircularPercentIndicator(
-                                                        percent: 0.976,
-                                                        radius: 35.5,
-                                                        lineWidth: 5.0,
-                                                        animation: true,
-                                                        animateFromLastPercent:
-                                                            true,
-                                                        progressColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent4,
+                                                      child: Stack(
+                                                        children: [
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child:
+                                                                CircularPercentIndicator(
+                                                              percent:
+                                                                  FFAppState()
+                                                                      .takenSpace,
+                                                              radius: 44.0,
+                                                              lineWidth: 6.0,
+                                                              animation: true,
+                                                              animateFromLastPercent:
+                                                                  true,
+                                                              progressColor:
+                                                                  Color(
+                                                                      0xFFFF0000),
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF70C9FF),
+                                                            ),
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: FaIcon(
+                                                              FontAwesomeIcons
+                                                                  .googleDrive,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 50.0,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ).animateOnPageLoad(
                                                         animationsMap[
@@ -1264,6 +1283,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             .primary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
                                                                       ),
@@ -1283,7 +1304,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    '87avgrz9' /* %  */,
+                                                                    '87avgrz9' /*  %  */,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1295,6 +1316,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             .primary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
                                                                       ),
@@ -1443,7 +1466,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '8vot9bzj' /* New Contracts */,
+                                                              '8vot9bzj' /* Events */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1475,7 +1498,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                '463rfkem' /* 3,200 */,
+                                                                '463rfkem' /* 0 */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -1484,6 +1507,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
                                                                             .displaySmallFamily,
+                                                                    fontSize:
+                                                                        32.0,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
@@ -1601,7 +1626,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'saxskj92' /* Expired Contracts */,
+                                                              'saxskj92' /* Tickets */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1633,7 +1658,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                '2wlrr5lg' /* 4300 */,
+                                                                '2wlrr5lg' /* 0 */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -1642,6 +1667,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
                                                                             .displaySmallFamily,
+                                                                    fontSize:
+                                                                        32.0,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
