@@ -53,7 +53,6 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget>
           (_model.tokens?.jsonBody ?? ''),
           r'''$.access_token''',
         ).toString().toString();
-        safeSetState(() {});
         FFAppState().RefreshToken = getJsonField(
           (_model.tokens?.jsonBody ?? ''),
           r'''$.refresh_token''',
@@ -65,15 +64,13 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Permission denied ! Try again .',
-              style: GoogleFonts.getFont(
-                'Poppins',
+              'zaaaaaaaaab',
+              style: TextStyle(
                 color: FlutterFlowTheme.of(context).primaryText,
-                fontSize: 22.0,
               ),
             ),
-            duration: Duration(milliseconds: 10000),
-            backgroundColor: Color(0xFFCD2020),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).secondary,
           ),
         );
       }
@@ -122,93 +119,92 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FutureBuilder<ApiCallResponse>(
-      future: GetAccessTokenAndRefreshTokenCall.call(),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }
-        final mainProfilePageGetAccessTokenAndRefreshTokenResponse =
-            snapshot.data!;
-
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    if (responsiveVisibility(
-                      context: context,
-                      phone: false,
-                      tablet: false,
-                    ))
-                      wrapWithModel(
-                        model: _model.webNavModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: WebNavWidget(
-                          iconOne: Icon(
-                            Icons.dashboard_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          iconTwo: Icon(
-                            Icons.group,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          iconThree: Icon(
-                            Icons.home_work_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          iconFour: Icon(
-                            Icons.account_circle,
-                            color: FlutterFlowTheme.of(context).primary,
-                          ),
-                          colorBgOne:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          colorBgTwo:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          colorBgThree:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          colorBgFour:
-                              FlutterFlowTheme.of(context).primaryBackground,
-                          textOne: FlutterFlowTheme.of(context).secondaryText,
-                          textTwo: FlutterFlowTheme.of(context).secondaryText,
-                          textThree: FlutterFlowTheme.of(context).secondaryText,
-                          textFour: FlutterFlowTheme.of(context).primaryText,
-                          iconFive: Icon(
-                            Icons.reduce_capacity,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          colorBgFive:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          textFive: FlutterFlowTheme.of(context).secondaryText,
-                        ),
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                if (responsiveVisibility(
+                  context: context,
+                  phone: false,
+                  tablet: false,
+                ))
+                  wrapWithModel(
+                    model: _model.webNavModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: WebNavWidget(
+                      iconOne: Icon(
+                        Icons.dashboard_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
                       ),
-                    Expanded(
-                      child: Container(
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Column(
+                      iconTwo: Icon(
+                        Icons.group,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                      ),
+                      iconThree: Icon(
+                        Icons.home_work_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                      ),
+                      iconFour: Icon(
+                        Icons.account_circle,
+                        color: FlutterFlowTheme.of(context).primary,
+                      ),
+                      colorBgOne:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      colorBgTwo:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      colorBgThree:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      colorBgFour:
+                          FlutterFlowTheme.of(context).primaryBackground,
+                      textOne: FlutterFlowTheme.of(context).secondaryText,
+                      textTwo: FlutterFlowTheme.of(context).secondaryText,
+                      textThree: FlutterFlowTheme.of(context).secondaryText,
+                      textFour: FlutterFlowTheme.of(context).primaryText,
+                      iconFive: Icon(
+                        Icons.reduce_capacity,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                      ),
+                      colorBgFive:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      textFive: FlutterFlowTheme.of(context).secondaryText,
+                    ),
+                  ),
+                Expanded(
+                  child: Container(
+                    width: 100.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                    ),
+                    child: FutureBuilder<ApiCallResponse>(
+                      future: GetAccessTokenAndRefreshTokenCall.call(
+                        authCode: FFAppState().authCode,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        final columnGetAccessTokenAndRefreshTokenResponse =
+                            snapshot.data!;
+
+                        return Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -589,16 +585,16 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget>
                               ],
                             ),
                           ],
-                        ),
-                      ),
+                        );
+                      },
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
