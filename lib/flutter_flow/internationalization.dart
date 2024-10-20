@@ -316,12 +316,62 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '4300',
     },
     'kphqz3hi': {
-      'en': 'Projects',
+      'en': 'Activity :',
       'id': 'Proyek',
       'ms': 'Projek',
     },
+    'umh53lbz': {
+      'en': 'Create new Event :',
+      'id': '',
+      'ms': '',
+    },
+    'ey8t4ib5': {
+      'en': 'Event name',
+      'id': '',
+      'ms': '',
+    },
+    'k66750e1': {
+      'en': 'Please enter event name...',
+      'id': '',
+      'ms': '',
+    },
+    'kb400y93': {
+      'en': 'Button',
+      'id': '',
+      'ms': '',
+    },
+    'gg4g5xcv': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    '6ra05afg': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
+    },
+    'i3i36cf5': {
+      'en': 'filters :',
+      'id': '',
+      'ms': '',
+    },
+    'mkkbhn21': {
+      'en': 'Event name',
+      'id': '',
+      'ms': '',
+    },
+    '01h18cpw': {
+      'en': 'Please enter event name...',
+      'id': '',
+      'ms': '',
+    },
+    '3unmz6a1': {
+      'en': 'Button',
+      'id': '',
+      'ms': '',
+    },
     'xlzf8qqx': {
-      'en': 'UI Design Team',
+      'en': 'My events :',
       'id': 'Tim Desain UI',
       'ms': 'Pasukan Reka Bentuk UI',
     },
@@ -329,26 +379,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '4 Members',
       'id': '4 Anggota',
       'ms': '4 Ahli',
-    },
-    'puy8obok': {
-      'en': 'Contract Activity',
-      'id': 'Aktivitas Kontrak',
-      'ms': 'Aktiviti Kontrak',
-    },
-    'zlovh0zt': {
-      'en': 'Below is an a summary of activity.',
-      'id': 'Di bawah ini adalah ringkasan kegiatan.',
-      'ms': 'Di bawah ialah ringkasan aktiviti.',
-    },
-    'g1uaaovn': {
-      'en': 'Customer Activity',
-      'id': 'Aktivitas Pelanggan',
-      'ms': 'Aktiviti Pelanggan',
-    },
-    'e5q3ows1': {
-      'en': 'Below is an a summary of activity.',
-      'id': 'Di bawah ini adalah ringkasan kegiatan.',
-      'ms': 'Di bawah ialah ringkasan aktiviti.',
     },
     'uj7jsxmo': {
       'en': 'Contract Activity',

@@ -26,9 +26,15 @@ class DriveRecord extends FirestoreRecord {
   String get limit => _limit ?? '';
   bool hasLimit() => _limit != null;
 
+  // "rft" field.
+  String? _rft;
+  String get rft => _rft ?? '';
+  bool hasRft() => _rft != null;
+
   void _initializeFields() {
     _usage = snapshotData['usage'] as String?;
     _limit = snapshotData['limit'] as String?;
+    _rft = snapshotData['rft'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -67,11 +73,13 @@ class DriveRecord extends FirestoreRecord {
 Map<String, dynamic> createDriveRecordData({
   String? usage,
   String? limit,
+  String? rft,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'usage': usage,
       'limit': limit,
+      'rft': rft,
     }.withoutNulls,
   );
 
@@ -83,11 +91,14 @@ class DriveRecordDocumentEquality implements Equality<DriveRecord> {
 
   @override
   bool equals(DriveRecord? e1, DriveRecord? e2) {
-    return e1?.usage == e2?.usage && e1?.limit == e2?.limit;
+    return e1?.usage == e2?.usage &&
+        e1?.limit == e2?.limit &&
+        e1?.rft == e2?.rft;
   }
 
   @override
-  int hash(DriveRecord? e) => const ListEquality().hash([e?.usage, e?.limit]);
+  int hash(DriveRecord? e) =>
+      const ListEquality().hash([e?.usage, e?.limit, e?.rft]);
 
   @override
   bool isValidKey(Object? o) => o is DriveRecord;
