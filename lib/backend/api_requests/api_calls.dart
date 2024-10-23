@@ -118,6 +118,39 @@ class CreateAppFolderCall {
   }
 }
 
+class CreateAnEventSheetCall {
+  static Future<ApiCallResponse> call({
+    String? fileId = '1a-uDnjomlP5FGs90Gyfiwx0Sa2SAvUxwoFJX8UWY9pE',
+    String? accessToken = '',
+    String? name = '',
+    String? parents = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "name": "${name}",
+  "parents": ["${parents}"]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'create an event sheet',
+      apiUrl: 'https://www.googleapis.com/drive/v3/files/${fileId}/copy',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
