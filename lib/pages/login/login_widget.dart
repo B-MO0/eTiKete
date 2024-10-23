@@ -294,8 +294,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         return;
                                       }
 
-                                      context.pushNamedAuth(
-                                          'Main_profilePage', context.mounted);
+                                      context.goNamedAuth(
+                                          'Home', context.mounted);
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'ye9mkdqf' /* Sign in with Google Account */,

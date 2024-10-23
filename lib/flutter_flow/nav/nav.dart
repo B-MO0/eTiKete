@@ -132,11 +132,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : MyTeamWidget(),
             ),
             FFRoute(
-              name: 'Main_profilePage',
-              path: 'mainProfilePage',
+              name: 'Complete_Profile',
+              path: 'completeProfile',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Main_profilePage')
-                  : MainProfilePageWidget(),
+                  ? NavBarPage(initialPage: 'Complete_Profile')
+                  : CompleteProfileWidget(),
             ),
             FFRoute(
               name: 'userDetails',

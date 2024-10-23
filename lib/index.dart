@@ -10,8 +10,8 @@ export '/pages/main_customer_list/main_customer_list_widget.dart'
 export '/pages/main_contracts/main_contracts_widget.dart'
     show MainContractsWidget;
 export '/pages/my_team/my_team_widget.dart' show MyTeamWidget;
-export '/pages/main_profile_page/main_profile_page_widget.dart'
-    show MainProfilePageWidget;
+export '/pages/complete_profile/complete_profile_widget.dart'
+    show CompleteProfileWidget;
 export '/pages/user_details/user_details_widget.dart' show UserDetailsWidget;
 export '/pages/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export '/pages/project_details_health_ai/project_details_health_ai_widget.dart'

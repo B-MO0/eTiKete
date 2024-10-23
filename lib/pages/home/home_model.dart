@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'home_widget.dart' show HomeWidget;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -22,18 +23,19 @@ import 'package:provider/provider.dart';
 class HomeModel extends FlutterFlowModel<HomeWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final formKey2 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // Stores action output result for [Backend Call - API (drive space)] action in Home widget.
   ApiCallResponse? storagedata;
+  // Stores action output result for [Backend Call - API (get access token from refresh token)] action in Home widget.
+  ApiCallResponse? refreshed;
   // Model for webNav component.
   late WebNavModel webNavModel;
   // State field(s) for EventName widget.
-  FocusNode? eventNameFocusNode1;
-  TextEditingController? eventNameTextController1;
-  String? Function(BuildContext, String?)? eventNameTextController1Validator;
-  String? _eventNameTextController1Validator(
-      BuildContext context, String? val) {
+  FocusNode? eventNameFocusNode;
+  TextEditingController? eventNameTextController;
+  String? Function(BuildContext, String?)? eventNameTextControllerValidator;
+  String? _eventNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'gg4g5xcv' /* Field is required */,
@@ -43,33 +45,23 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     if (val.length < 1) {
       return 'Requires at least 1 characters.';
     }
-    if (val.length > 30) {
-      return 'Maximum 30 characters allowed, currently ${val.length}.';
+    if (val.length > 15) {
+      return 'Maximum 15 characters allowed, currently ${val.length}.';
     }
 
     return null;
   }
 
-  // Stores action output result for [Validate Form] action in Button widget.
-  bool? eventName;
-  // State field(s) for EventName widget.
-  FocusNode? eventNameFocusNode2;
-  TextEditingController? eventNameTextController2;
-  String? Function(BuildContext, String?)? eventNameTextController2Validator;
-
   @override
   void initState(BuildContext context) {
     webNavModel = createModel(context, () => WebNavModel());
-    eventNameTextController1Validator = _eventNameTextController1Validator;
+    eventNameTextControllerValidator = _eventNameTextControllerValidator;
   }
 
   @override
   void dispose() {
     webNavModel.dispose();
-    eventNameFocusNode1?.dispose();
-    eventNameTextController1?.dispose();
-
-    eventNameFocusNode2?.dispose();
-    eventNameTextController2?.dispose();
+    eventNameFocusNode?.dispose();
+    eventNameTextController?.dispose();
   }
 }

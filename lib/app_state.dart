@@ -23,6 +23,9 @@ class FFAppState extends ChangeNotifier {
       _authCode = prefs.getString('ff_authCode') ?? _authCode;
     });
     _safeInit(() {
+      _AccessToken = prefs.getString('ff_AccessToken') ?? _AccessToken;
+    });
+    _safeInit(() {
       _RefreshToken = prefs.getString('ff_RefreshToken') ?? _RefreshToken;
     });
     _safeInit(() {
@@ -57,6 +60,7 @@ class FFAppState extends ChangeNotifier {
   String get AccessToken => _AccessToken;
   set AccessToken(String value) {
     _AccessToken = value;
+    prefs.setString('ff_AccessToken', value);
   }
 
   String _RefreshToken = '';

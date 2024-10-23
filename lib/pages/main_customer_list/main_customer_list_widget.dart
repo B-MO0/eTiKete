@@ -463,7 +463,7 @@ class _MainCustomerListWidgetState extends State<MainCustomerListWidget>
                                           .primaryText,
                                       unselectedLabelColor:
                                           FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .primaryText,
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(

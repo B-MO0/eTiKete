@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -77,18 +78,47 @@ class FFLocalizations {
   };
 }
 
+/// Used if the locale is not supported by GlobalMaterialLocalizations.
+class FallbackMaterialLocalizationDelegate
+    extends LocalizationsDelegate<MaterialLocalizations> {
+  const FallbackMaterialLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<MaterialLocalizations> load(Locale locale) async =>
+      SynchronousFuture<MaterialLocalizations>(
+        const DefaultMaterialLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackMaterialLocalizationDelegate old) => false;
+}
+
+/// Used if the locale is not supported by GlobalCupertinoLocalizations.
+class FallbackCupertinoLocalizationDelegate
+    extends LocalizationsDelegate<CupertinoLocalizations> {
+  const FallbackCupertinoLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<CupertinoLocalizations> load(Locale locale) =>
+      SynchronousFuture<CupertinoLocalizations>(
+        const DefaultCupertinoLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackCupertinoLocalizationDelegate old) => false;
+}
+
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
   const FFLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) {
-    final language = locale.toString();
-    return FFLocalizations.languages().contains(
-      language.endsWith('_')
-          ? language.substring(0, language.length - 1)
-          : language,
-    );
-  }
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
 
   @override
   Future<FFLocalizations> load(Locale locale) =>
@@ -104,6 +134,15 @@ Locale createLocale(String language) => language.contains('_')
         scriptCode: language.split('_').last,
       )
     : Locale(language);
+
+bool _isSupportedLocale(Locale locale) {
+  final language = locale.toString();
+  return FFLocalizations.languages().contains(
+    language.endsWith('_')
+        ? language.substring(0, language.length - 1)
+        : language,
+  );
+}
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Login
@@ -271,7 +310,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'Papan pemuka',
     },
     'nnv46x35': {
-      'en': 'Below is a summary of your teams activity.',
+      'en': 'Below is a summary of your activity.',
       'id': 'Di bawah ini adalah ringkasan aktivitas tim Anda.',
       'ms': 'Di bawah ialah ringkasan aktiviti pasukan anda.',
     },
@@ -315,11 +354,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '4300',
       'ms': '4300',
     },
-    'kphqz3hi': {
-      'en': 'Activity :',
-      'id': 'Proyek',
-      'ms': 'Projek',
-    },
     'umh53lbz': {
       'en': 'Create new Event :',
       'id': '',
@@ -336,7 +370,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     'kb400y93': {
-      'en': 'Button',
+      'en': 'Create',
       'id': '',
       'ms': '',
     },
@@ -350,23 +384,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    'i3i36cf5': {
-      'en': 'filters :',
+    'ofzom8yw': {
+      'en': 'Search :',
       'id': '',
       'ms': '',
     },
-    'mkkbhn21': {
-      'en': 'Event name',
-      'id': '',
-      'ms': '',
-    },
-    '01h18cpw': {
-      'en': 'Please enter event name...',
-      'id': '',
-      'ms': '',
-    },
-    '3unmz6a1': {
+    '67oi4r27': {
       'en': 'Button',
+      'id': '',
+      'ms': '',
+    },
+    'kmz7a236': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    'pyouawdn': {
+      'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
     },
@@ -375,10 +409,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': 'Tim Desain UI',
       'ms': 'Pasukan Reka Bentuk UI',
     },
-    'zt3s5l2s': {
-      'en': '4 Members',
-      'id': '4 Anggota',
-      'ms': '4 Ahli',
+    'tu47hbux': {
+      'en': 'Delete',
+      'id': '',
+      'ms': '',
     },
     'uj7jsxmo': {
       'en': 'Contract Activity',
@@ -865,7 +899,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '__',
     },
   },
-  // Main_profilePage
+  // Complete_Profile
   {
     'qrxn5crt': {
       'en': 'My Profile',

@@ -94,6 +94,8 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        FallbackMaterialLocalizationDelegate(),
+        FallbackCupertinoLocalizationDelegate(),
       ],
       locale: _locale,
       supportedLocales: const [
@@ -140,7 +142,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Main_customerList': MainCustomerListWidget(),
       'Main_Contracts': MainContractsWidget(),
       'myTeam': MyTeamWidget(),
-      'Main_profilePage': MainProfilePageWidget(),
+      'Complete_Profile': CompleteProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
