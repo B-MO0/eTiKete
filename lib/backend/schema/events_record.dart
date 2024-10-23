@@ -31,10 +31,16 @@ class EventsRecord extends FirestoreRecord {
   String get uid => _uid ?? '';
   bool hasUid() => _uid != null;
 
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
+
   void _initializeFields() {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _name = snapshotData['name'] as String?;
     _uid = snapshotData['uid'] as String?;
+    _user = snapshotData['user'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -74,12 +80,14 @@ Map<String, dynamic> createEventsRecordData({
   DateTime? createdTime,
   String? name,
   String? uid,
+  DocumentReference? user,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'created_time': createdTime,
       'name': name,
       'uid': uid,
+      'user': user,
     }.withoutNulls,
   );
 
@@ -93,12 +101,13 @@ class EventsRecordDocumentEquality implements Equality<EventsRecord> {
   bool equals(EventsRecord? e1, EventsRecord? e2) {
     return e1?.createdTime == e2?.createdTime &&
         e1?.name == e2?.name &&
-        e1?.uid == e2?.uid;
+        e1?.uid == e2?.uid &&
+        e1?.user == e2?.user;
   }
 
   @override
   int hash(EventsRecord? e) =>
-      const ListEquality().hash([e?.createdTime, e?.name, e?.uid]);
+      const ListEquality().hash([e?.createdTime, e?.name, e?.uid, e?.user]);
 
   @override
   bool isValidKey(Object? o) => o is EventsRecord;

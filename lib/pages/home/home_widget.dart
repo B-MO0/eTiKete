@@ -2000,6 +2000,15 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                                     if (_model.formKey1.currentState == null || !_model.formKey1.currentState!.validate()) {
                                                                                       return;
                                                                                     }
+                                                                                    await actions.getAppFolderID(
+                                                                                      context,
+                                                                                      'dummy2',
+                                                                                    );
+                                                                                    await CreateAnEventSheetCall.call(
+                                                                                      accessToken: FFAppState().AccessToken,
+                                                                                      name: _model.eventNameTextController.text,
+                                                                                      parents: FFAppState().drfId,
+                                                                                    );
 
                                                                                     await EventsRecord.collection.doc().set({
                                                                                       ...createEventsRecordData(

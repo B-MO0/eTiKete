@@ -23,9 +23,6 @@ class FFAppState extends ChangeNotifier {
       _authCode = prefs.getString('ff_authCode') ?? _authCode;
     });
     _safeInit(() {
-      _AccessToken = prefs.getString('ff_AccessToken') ?? _AccessToken;
-    });
-    _safeInit(() {
       _RefreshToken = prefs.getString('ff_RefreshToken') ?? _RefreshToken;
     });
     _safeInit(() {
@@ -33,6 +30,9 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _usage = prefs.getDouble('ff_usage') ?? _usage;
+    });
+    _safeInit(() {
+      _drfId = prefs.getString('ff_drfId') ?? _drfId;
     });
   }
 
@@ -60,7 +60,6 @@ class FFAppState extends ChangeNotifier {
   String get AccessToken => _AccessToken;
   set AccessToken(String value) {
     _AccessToken = value;
-    prefs.setString('ff_AccessToken', value);
   }
 
   String _RefreshToken = '';
@@ -94,6 +93,13 @@ class FFAppState extends ChangeNotifier {
   double get takenSpace => _takenSpace;
   set takenSpace(double value) {
     _takenSpace = value;
+  }
+
+  String _drfId = '';
+  String get drfId => _drfId;
+  set drfId(String value) {
+    _drfId = value;
+    prefs.setString('ff_drfId', value);
   }
 }
 
