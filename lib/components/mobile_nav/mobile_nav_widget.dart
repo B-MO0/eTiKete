@@ -262,7 +262,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   context.pushNamed(
-                    'Main_profilePage',
+                    'Complete_Profile',
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,

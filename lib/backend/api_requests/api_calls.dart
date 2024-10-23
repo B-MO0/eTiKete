@@ -86,6 +86,38 @@ class GetAccessTokenFromRefreshTokenCall {
   }
 }
 
+class CreateAppFolderCall {
+  static Future<ApiCallResponse> call({
+    String? accessToken = '',
+    String? name = 'ETIKETE',
+    String? mimeType = 'application/vnd.google-apps.folder',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "name": "${name}",
+  "mimeType": "${mimeType}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'create app folder',
+      apiUrl: 'https://www.googleapis.com/drive/v3/files',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
