@@ -359,12 +359,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    'ey8t4ib5': {
-      'en': 'Event name',
+    '6olynbzf': {
+      'en': 'Event Name',
       'id': '',
       'ms': '',
     },
-    'k66750e1': {
+    'prdvh1ov': {
       'en': 'Please enter event name...',
       'id': '',
       'ms': '',
@@ -374,32 +374,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    'gg4g5xcv': {
+    'vu0b9hg1': {
       'en': 'Field is required',
       'id': '',
       'ms': '',
     },
-    '6ra05afg': {
-      'en': 'Please choose an option from the dropdown',
-      'id': '',
-      'ms': '',
-    },
-    'ofzom8yw': {
-      'en': 'Search :',
-      'id': '',
-      'ms': '',
-    },
-    '67oi4r27': {
-      'en': 'Button',
-      'id': '',
-      'ms': '',
-    },
-    'kmz7a236': {
-      'en': 'Field is required',
-      'id': '',
-      'ms': '',
-    },
-    'pyouawdn': {
+    'm7d84wpy': {
       'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
@@ -409,35 +389,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': 'Tim Desain UI',
       'ms': 'Pasukan Reka Bentuk UI',
     },
+    'zt3s5l2s': {
+      'en': '4 Members',
+      'id': '4 Anggota',
+      'ms': '4 Ahli',
+    },
     'tu47hbux': {
       'en': 'Delete',
       'id': '',
       'ms': '',
-    },
-    'uj7jsxmo': {
-      'en': 'Contract Activity',
-      'id': 'Aktivitas Kontrak',
-      'ms': 'Aktiviti Kontrak',
-    },
-    'hkk2zmjw': {
-      'en': 'Below is an a summary of activity.',
-      'id': 'Di bawah ini adalah ringkasan kegiatan.',
-      'ms': 'Di bawah ialah ringkasan aktiviti.',
-    },
-    'jkgae0vc': {
-      'en': 'Customer Activity',
-      'id': 'Aktivitas Pelanggan',
-      'ms': 'Aktiviti Pelanggan',
-    },
-    'g4os7kcp': {
-      'en': 'Below is an a summary of activity.',
-      'id': 'Di bawah ini adalah ringkasan kegiatan.',
-      'ms': 'Di bawah ialah ringkasan aktiviti.',
-    },
-    'y24lcr13': {
-      'en': 'Dashboard',
-      'id': 'Dasbor',
-      'ms': 'Papan pemuka',
     },
     'xdxbdj20': {
       'en': '__',
