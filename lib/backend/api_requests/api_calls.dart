@@ -151,6 +151,29 @@ class CreateAnEventSheetCall {
   }
 }
 
+class DeleteEventSheetCall {
+  static Future<ApiCallResponse> call({
+    String? fileId = '',
+    String? accessToken = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'delete event sheet',
+      apiUrl: 'https://www.googleapis.com/drive/v3/files/${fileId}',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
