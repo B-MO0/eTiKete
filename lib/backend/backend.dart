@@ -9,6 +9,7 @@ import 'schema/users_record.dart';
 import 'schema/drive_record.dart';
 import 'schema/events_record.dart';
 import 'schema/appinfo_record.dart';
+import 'schema/tickets_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -21,6 +22,7 @@ export 'schema/users_record.dart';
 export 'schema/drive_record.dart';
 export 'schema/events_record.dart';
 export 'schema/appinfo_record.dart';
+export 'schema/tickets_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -165,6 +167,46 @@ Future<List<AppinfoRecord>> queryAppinfoRecordOnce({
     queryCollectionOnce(
       AppinfoRecord.collection,
       AppinfoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TicketsRecords (as a Stream and as a Future).
+Future<int> queryTicketsRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TicketsRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TicketsRecord>> queryTicketsRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TicketsRecord.collection(parent),
+      TicketsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TicketsRecord>> queryTicketsRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TicketsRecord.collection(parent),
+      TicketsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

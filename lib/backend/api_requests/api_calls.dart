@@ -174,6 +174,53 @@ class DeleteEventSheetCall {
   }
 }
 
+class AddTicketToSheetCall {
+  static Future<ApiCallResponse> call({
+    String? spreadsheetId = '',
+    String? range = 'Sheet1!A:E',
+    String? accessToken = '',
+    String? majorDimension = 'ROWS',
+    String? fName = '',
+    String? lName = '',
+    String? email = '',
+    String? uid = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "range": "${range}",
+  "majorDimension": "${majorDimension}",
+  "values": [
+    [
+      "${fName}",
+      "${lName}",
+      "${email}",
+      "${uid}",
+      "https://quickchart.io/qr?text=${uid}"
+    ]
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'add ticket to sheet',
+      apiUrl:
+          'https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

@@ -1,6 +1,4 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/components/command_palette/command_palette_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -9,27 +7,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'complete_profile_model.dart';
-export 'complete_profile_model.dart';
+import 'profile_model.dart';
+export 'profile_model.dart';
 
-class CompleteProfileWidget extends StatefulWidget {
-  const CompleteProfileWidget({super.key});
+class ProfileWidget extends StatefulWidget {
+  const ProfileWidget({super.key});
 
   @override
-  State<CompleteProfileWidget> createState() => _CompleteProfileWidgetState();
+  State<ProfileWidget> createState() => _ProfileWidgetState();
 }
 
-class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
+class _ProfileWidgetState extends State<ProfileWidget>
     with TickerProviderStateMixin {
-  late CompleteProfileModel _model;
+  late ProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -38,72 +34,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CompleteProfileModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.getPageParams(
-        'code',
-        'scope',
-      );
-      if (FFAppState().authCode != null && FFAppState().authCode != '') {
-        _model.tokens = await GetAccessTokenAndRefreshTokenCall.call(
-          authCode: FFAppState().authCode,
-        );
-
-        if ((_model.tokens?.succeeded ?? true)) {
-          FFAppState().AccessToken = getJsonField(
-            (_model.tokens?.jsonBody ?? ''),
-            r'''$.access_token''',
-          ).toString().toString();
-          FFAppState().RefreshToken = getJsonField(
-            (_model.tokens?.jsonBody ?? ''),
-            r'''$.refresh_token''',
-          ).toString().toString();
-          safeSetState(() {});
-          _model.appdriveinfo = await CreateAppFolderCall.call(
-            accessToken: FFAppState().AccessToken,
-          );
-
-          await AppinfoRecord.collection.doc().set(createAppinfoRecordData(
-                refreshToken: FFAppState().RefreshToken,
-                drfId: getJsonField(
-                  (_model.appdriveinfo?.jsonBody ?? ''),
-                  r'''$.id''',
-                ).toString().toString(),
-                user: currentUserReference,
-              ));
-
-          context.pushNamed('Home');
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'zaaaaaaaaab',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryText,
-                ),
-              ),
-              duration: Duration(milliseconds: 4000),
-              backgroundColor: FlutterFlowTheme.of(context).secondary,
-            ),
-          );
-        }
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'please consent',
-              style: TextStyle(
-                color: FlutterFlowTheme.of(context).primaryText,
-              ),
-            ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).alternate,
-          ),
-        );
-      }
-    });
+    _model = createModel(context, () => ProfileModel());
 
     animationsMap.addAll({
       'textOnPageLoadAnimation': AnimationInfo(
@@ -146,8 +77,6 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -248,7 +177,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                       16.0, 16.0, 0.0, 16.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'qrxn5crt' /* Complete Profile */,
+                                      'jfsyzxgp' /* My Profile */,
                                     ),
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
@@ -471,7 +400,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                   24.0, 12.0, 0.0, 12.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'fyxsf6vn' /* Complete your profile */,
+                                  'jsa0o5x4' /* Profile informations */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -517,54 +446,6 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 20.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      await launchURL(
-                                          'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive%20https%3A//www.googleapis.com/auth/presentations%20https%3A//www.googleapis.com/auth/script.deployments&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=https://etikete-7k15uq.flutterflow.app&client_id=364818987476-v8lv59fnr7qjo4s55e0ngr86idmigqdi.apps.googleusercontent.com');
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      'abqf147c' /* CONSENT */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: 90.0,
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
-                                          ),
-                                      elevation: 1.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40.0),
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ],

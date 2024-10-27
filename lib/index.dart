@@ -5,8 +5,7 @@ export '/pages/create_account/create_account_widget.dart'
 export '/pages/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/pages/home/home_widget.dart' show HomeWidget;
-export '/pages/main_customer_list/main_customer_list_widget.dart'
-    show MainCustomerListWidget;
+export '/pages/event_page/event_page_widget.dart' show EventPageWidget;
 export '/pages/main_contracts/main_contracts_widget.dart'
     show MainContractsWidget;
 export '/pages/my_team/my_team_widget.dart' show MyTeamWidget;
@@ -19,3 +18,4 @@ export '/pages/project_details_health_ai/project_details_health_ai_widget.dart'
 export '/pages/project_details/project_details_widget.dart'
     show ProjectDetailsWidget;
 export '/pages/search_page/search_page_widget.dart' show SearchPageWidget;
+export '/pages/profile/profile_widget.dart' show ProfileWidget;

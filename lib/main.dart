@@ -139,10 +139,10 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'Main_customerList': MainCustomerListWidget(),
       'Main_Contracts': MainContractsWidget(),
       'myTeam': MyTeamWidget(),
       'Complete_Profile': CompleteProfileWidget(),
+      'Profile': ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -178,20 +178,6 @@ class _NavBarPageState extends State<NavBarPage> {
               ),
               label: FFLocalizations.of(context).getText(
                 'xdxbdj20' /* __ */,
-              ),
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.supervised_user_circle_outlined,
-                size: 24.0,
-              ),
-              activeIcon: Icon(
-                Icons.supervised_user_circle_sharp,
-                size: 32.0,
-              ),
-              label: FFLocalizations.of(context).getText(
-                '3ourv2w9' /* __ */,
               ),
               tooltip: '',
             ),
@@ -234,6 +220,20 @@ class _NavBarPageState extends State<NavBarPage> {
               ),
               label: FFLocalizations.of(context).getText(
                 'o3dp9tss' /* __ */,
+              ),
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_circle_outlined,
+                size: 24.0,
+              ),
+              activeIcon: Icon(
+                Icons.account_circle,
+                size: 32.0,
+              ),
+              label: FFLocalizations.of(context).getText(
+                '4bpetcjv' /* __ */,
               ),
               tooltip: '',
             )

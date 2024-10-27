@@ -111,11 +111,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
-              name: 'Main_customerList',
-              path: 'mainCustomerList',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Main_customerList')
-                  : MainCustomerListWidget(),
+              name: 'EventPage',
+              path: 'eventPage',
+              requireAuth: true,
+              builder: (context, params) => EventPageWidget(
+                receiveEvent: params.getParam(
+                  'receiveEvent',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['Events'],
+                ),
+              ),
             ),
             FFRoute(
               name: 'Main_Contracts',
@@ -163,6 +169,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'searchPage',
               path: 'searchPage',
               builder: (context, params) => SearchPageWidget(),
+            ),
+            FFRoute(
+              name: 'Profile',
+              path: 'profile',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Profile')
+                  : ProfileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
