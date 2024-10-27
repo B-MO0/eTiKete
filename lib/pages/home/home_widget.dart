@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/card_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1757,8 +1758,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                                         ),
                                                                                     elevation: 0.0,
                                                                                     borderRadius: BorderRadius.circular(10.0),
-                                                                                    disabledColor: FlutterFlowTheme.of(context).gray200,
-                                                                                    disabledTextColor: FlutterFlowTheme.of(context).accent3,
+                                                                                    disabledColor: Color(0xFFC1C1C1),
+                                                                                    disabledTextColor: Color(0xFFFFFDFD),
+                                                                                    hoverElevation: 2.0,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -1920,164 +1922,68 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 final oeventItem =
                                                                     oevent[
                                                                         oeventIndex];
-                                                                return Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                                return InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    context
+                                                                        .pushNamed(
+                                                                      'EventPage',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'receiveEvent':
+                                                                            serializeParam(
+                                                                          oeventItem
+                                                                              .reference,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        kTransitionInfoKey:
+                                                                            TransitionInfo(
+                                                                          hasTransition:
+                                                                              true,
+                                                                          transitionType:
+                                                                              PageTransitionType.fade,
+                                                                          duration:
+                                                                              Duration(milliseconds: 0),
+                                                                        ),
+                                                                      },
+                                                                    );
+                                                                  },
                                                                   child:
-                                                                      Container(
-                                                                    constraints:
-                                                                        BoxConstraints(
-                                                                      maxWidth:
-                                                                          MediaQuery.sizeOf(context).width *
-                                                                              0.36,
-                                                                    ),
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryBackground,
-                                                                      boxShadow: [
-                                                                        BoxShadow(
-                                                                          blurRadius:
-                                                                              4.0,
-                                                                          color:
-                                                                              Color(0x1F000000),
-                                                                          offset:
-                                                                              Offset(
-                                                                            0.0,
-                                                                            2.0,
-                                                                          ),
-                                                                        )
-                                                                      ],
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10.0),
-                                                                      border:
-                                                                          Border
-                                                                              .all(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        width:
-                                                                            4.0,
-                                                                      ),
-                                                                    ),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              6.0),
-                                                                      child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Expanded(
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Expanded(
-                                                                                    flex: 3,
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                                      child: AutoSizeText(
-                                                                                        oeventItem.name.maybeHandleOverflow(
-                                                                                          maxChars: 15,
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                              color: FlutterFlowTheme.of(context).primary,
-                                                                                              fontSize: 30.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    child: FFButtonWidget(
-                                                                                      onPressed: () async {
-                                                                                        await DeleteEventSheetCall.call(
-                                                                                          fileId: oeventItem.uid,
-                                                                                          accessToken: FFAppState().AccessToken,
-                                                                                        );
-
-                                                                                        await oeventItem.reference.delete();
-                                                                                      },
-                                                                                      text: FFLocalizations.of(context).getText(
-                                                                                        'tu47hbux' /* Delete */,
-                                                                                      ),
-                                                                                      options: FFButtonOptions(
-                                                                                        height: 28.0,
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10.0, 6.0, 10.0, 6.0),
-                                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                        color: Color(0xFFFF0C1D),
-                                                                                        textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                              color: Colors.white,
-                                                                                              fontSize: 10.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                            ),
-                                                                                        elevation: 0.0,
-                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                        hoverElevation: 2.0,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Expanded(
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                              child: Text(
-                                                                                valueOrDefault<String>(
-                                                                                  oeventItem.createdTime?.toString(),
-                                                                                  '0',
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                      fontSize: 10.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Expanded(
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                              child: Text(
-                                                                                valueOrDefault<String>(
-                                                                                  oeventItem.uid,
-                                                                                  'no uid',
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                      fontSize: 10.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
+                                                                      CardWidget(
+                                                                    key: Key(
+                                                                        'Key5fk_${oeventIndex}_of_${oevent.length}'),
+                                                                    parameter1:
+                                                                        oeventItem
+                                                                            .name,
+                                                                    parameter2:
+                                                                        oeventItem
+                                                                            .uid,
+                                                                    parameter3:
+                                                                        oeventItem
+                                                                            .reference,
+                                                                    parameter4:
+                                                                        oeventItem
+                                                                            .createdTime,
+                                                                    parameter5:
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                      oeventItem
+                                                                          .uid,
+                                                                      'no uid',
                                                                     ),
                                                                   ),
                                                                 );

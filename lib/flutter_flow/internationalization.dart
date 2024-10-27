@@ -394,208 +394,83 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '4 Anggota',
       'ms': '4 Ahli',
     },
-    'tu47hbux': {
-      'en': 'Delete',
-      'id': '',
-      'ms': '',
-    },
     'xdxbdj20': {
       'en': '__',
       'id': '__',
       'ms': '__',
     },
   },
-  // Main_customerList
+  // EventPage
   {
     'n99lg1qh': {
-      'en': 'Customers',
+      'en': 'Event :',
       'id': 'Pelanggan',
       'ms': 'Pelanggan',
     },
-    'lvnskphp': {
-      'en': 'All',
-      'id': 'Semua',
-      'ms': 'Semua',
-    },
-    'a258xeav': {
-      'en': 'Randy Alcorn',
-      'id': 'Randy Alcorn',
-      'ms': 'Randy Alcorn',
-    },
-    'wduyui67': {
-      'en': 'Head of Procurement',
-      'id': 'Kepala Pengadaan',
-      'ms': 'Ketua Perolehan',
-    },
-    'riw99ssl': {
-      'en': 'ACME Co.',
-      'id': 'ACME Co.',
-      'ms': 'ACME Co.',
-    },
-    'u0su8kte': {
-      'en': 'James Wiseman',
-      'id': 'James Wiseman',
-      'ms': 'James Wiseman',
-    },
-    'nyfsg4hw': {
-      'en': 'Account Manager',
-      'id': 'Manajer Akuntansi',
-      'ms': 'Pengurus akaun',
-    },
-    'gzwu4cjr': {
-      'en': 'ACME Co.',
-      'id': 'ACME Co.',
-      'ms': 'ACME Co.',
-    },
-    'v1ffzm93': {
-      'en': 'Ignacious Rodriguez',
-      'id': 'Rodriguez yang kejam',
-      'ms': 'Ignacious Rodriguez',
-    },
-    '8jo402mn': {
-      'en': 'Sales Manager',
-      'id': 'Manajer penjualan',
-      'ms': 'Pengurus jualan',
-    },
-    'r658c9dm': {
-      'en': 'Robin HQ',
-      'id': 'Robin HQ',
-      'ms': 'Robin HQ',
-    },
-    'l5cpbw6i': {
-      'en': 'Elena Williams',
-      'id': 'Elena Williams',
-      'ms': 'Elena Williams',
-    },
-    '9ico69uv': {
-      'en': 'Head of Product & Innovation',
-      'id': 'Kepala Produk &amp; Inovasi',
-      'ms': 'Ketua Produk &amp; Inovasi',
-    },
-    'i1898004': {
-      'en': 'Robin HQ',
-      'id': 'Robin HQ',
-      'ms': 'Robin HQ',
-    },
-    's8kuamom': {
-      'en': 'Greg Brown',
-      'id': 'Greg Brown',
-      'ms': 'Greg Brown',
-    },
-    'uu60i528': {
-      'en': 'Account Manager',
-      'id': 'Manajer Akuntansi',
-      'ms': 'Pengurus akaun',
-    },
-    '6nuzim8s': {
-      'en': 'Robin HQ',
-      'id': 'Robin HQ',
-      'ms': 'Robin HQ',
-    },
-    'lwflemu4': {
-      'en': 'June Williamson',
-      'id': 'Juni Williamson',
-      'ms': 'June Williamson',
-    },
-    'rxejb1ds': {
-      'en': 'Sr. Account Manager',
-      'id': 'Manajer Akun Senior',
-      'ms': 'Tuan Pengurus Akaun',
-    },
-    'k5yutyp7': {
-      'en': 'HealthAi',
-      'id': 'KesehatanAi',
-      'ms': 'KesihatanAi',
-    },
-    'z6bqikmn': {
-      'en': 'June Williamson',
-      'id': 'Juni Williamson',
-      'ms': 'June Williamson',
-    },
-    'rm4hba82': {
-      'en': 'Sr. Account Manager',
-      'id': 'Manajer Akun Senior',
-      'ms': 'Tuan Pengurus Akaun',
-    },
-    'id05iiyh': {
-      'en': 'HealthAi',
-      'id': 'KesehatanAi',
-      'ms': 'KesihatanAi',
-    },
-    'qh2ock0d': {
-      'en': 'Active',
-      'id': 'Aktif',
-      'ms': 'Aktif',
-    },
-    'evmi1fjb': {
-      'en': 'June Williamson',
-      'id': 'Juni Williamson',
-      'ms': 'June Williamson',
-    },
-    '7t7dfs7b': {
-      'en': 'Sr. Account Manager',
-      'id': 'Manajer Akun Senior',
-      'ms': 'Tuan Pengurus Akaun',
-    },
-    'rv0grt5f': {
-      'en': 'HealthAi',
-      'id': 'KesehatanAi',
-      'ms': 'KesihatanAi',
-    },
-    '1c1n7s8k': {
-      'en': 'James Wiseman',
-      'id': 'James Wiseman',
-      'ms': 'James Wiseman',
-    },
-    '13p4ybb4': {
-      'en': 'Account Manager',
-      'id': 'Manajer Akuntansi',
-      'ms': 'Pengurus akaun',
-    },
-    'y7tux8cs': {
-      'en': 'HealthAi',
-      'id': 'KesehatanAi',
-      'ms': 'KesihatanAi',
-    },
-    's7xebw09': {
-      'en': 'Cold Calls',
-      'id': 'Panggilan Dingin',
-      'ms': 'Panggilan Dingin',
-    },
-    'xaq75cfo': {
-      'en': 'Randy Alcorn',
-      'id': 'Randy Alcorn',
-      'ms': 'Randy Alcorn',
-    },
-    '3hsvv2b4': {
-      'en': 'Head of Procurement',
-      'id': 'Kepala Pengadaan',
-      'ms': 'Ketua Perolehan',
-    },
-    '8df6l0nu': {
-      'en': 'ACME Co.',
-      'id': 'ACME Co.',
-      'ms': 'ACME Co.',
-    },
-    '1azw03n0': {
-      'en': 'Elena Williams',
-      'id': 'Elena Williams',
-      'ms': 'Elena Williams',
-    },
-    '4i0nlpng': {
-      'en': 'Head of Product & Innovation',
-      'id': 'Kepala Produk &amp; Inovasi',
-      'ms': 'Ketua Produk &amp; Inovasi',
-    },
-    'k60lznjm': {
-      'en': 'Robin HQ',
-      'id': 'Robin HQ',
-      'ms': 'Robin HQ',
-    },
-    'fcyoodds': {
-      'en': 'Customers',
+    'q358g84o': {
+      'en': 'Create a ticket :',
       'id': 'Pelanggan',
       'ms': 'Pelanggan',
+    },
+    'su536x4h': {
+      'en': 'First Name ...',
+      'id': '',
+      'ms': '',
+    },
+    'j1s38itw': {
+      'en': 'Last Name ...',
+      'id': '',
+      'ms': '',
+    },
+    '7mmjuo40': {
+      'en': 'Email ...',
+      'id': '',
+      'ms': '',
+    },
+    '0zg8qe4w': {
+      'en': 'Add ticket',
+      'id': '',
+      'ms': '',
+    },
+    'gg4g5xcv': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    '6ra05afg': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
+    },
+    'kht44sby': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    'a7wbbgv9': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
+    },
+    '05tf73pa': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    '1x7o4bpw': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
+    },
+    'ai25nob0': {
+      'en': 'Tickets:',
+      'id': '',
+      'ms': '',
+    },
+    's9tyor0r': {
+      'en': 'Delete',
+      'id': '',
+      'ms': '',
     },
     '3ourv2w9': {
       'en': '__',
@@ -862,7 +737,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Complete_Profile
   {
     'qrxn5crt': {
-      'en': 'My Profile',
+      'en': 'Complete Profile',
       'id': 'Profil saya',
       'ms': 'Profil saya',
     },
@@ -1205,6 +1080,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'Rumah',
     },
   },
+  // Profile
+  {
+    'jfsyzxgp': {
+      'en': 'My Profile',
+      'id': 'Profil saya',
+      'ms': 'Profil saya',
+    },
+    'jsa0o5x4': {
+      'en': 'Profile informations',
+      'id': 'Pengaturan akun',
+      'ms': 'Tetapan Akaun',
+    },
+    '4bpetcjv': {
+      'en': '__',
+      'id': '__',
+      'ms': '__',
+    },
+  },
   // modal_success
   {
     'kred63vb': {
@@ -1328,34 +1221,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'Cipta Nota',
     },
   },
-  // mobileNav
-  {
-    'sy0pxvma': {
-      'en': 'Dashboard',
-      'id': 'Dasbor',
-      'ms': 'Papan pemuka',
-    },
-    't5c3aiuy': {
-      'en': 'My Team',
-      'id': 'Kelompok ku',
-      'ms': 'Pasukan saya',
-    },
-    'nkz3c58a': {
-      'en': 'Customers',
-      'id': 'Pelanggan',
-      'ms': 'Pelanggan',
-    },
-    '1mkyyjwj': {
-      'en': 'Contracts',
-      'id': 'Kontrak',
-      'ms': 'Kontrak',
-    },
-    'eg79coc6': {
-      'en': 'Profile',
-      'id': 'Profil',
-      'ms': 'Profil',
-    },
-  },
   // webNav
   {
     'b8i4mxtm': {
@@ -1472,6 +1337,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sr54fsk6': {
       'en': 'Save Changes',
+      'id': '',
+      'ms': '',
+    },
+  },
+  // eventcard
+  {
+    'yr4tcrth': {
+      'en': 'Delete',
+      'id': '',
+      'ms': '',
+    },
+  },
+  // card
+  {
+    '8g6ovalp': {
+      'en': 'Delete',
       'id': '',
       'ms': '',
     },
