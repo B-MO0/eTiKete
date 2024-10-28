@@ -221,6 +221,109 @@ class AddTicketToSheetCall {
   }
 }
 
+class UpdateSlideCall {
+  static Future<ApiCallResponse> call({
+    String? presentationId = '',
+    String? accessToken = '',
+    String? firstname = '',
+    String? lastname = '',
+    String? email = '',
+    String? rectangleImageId = '',
+    String? qrcode = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "requests": [
+    {
+      "replaceAllText": {
+        "containsText": {
+          "text": "{{FirstName}}",
+          "matchCase": true
+        },
+        "replaceText": "${firstname}"
+      }
+    },
+    {
+      "replaceAllText": {
+        "containsText": {
+          "text": "{{LastName}}",
+          "matchCase": true
+        },
+        "replaceText": "${lastname}"
+      }
+    },
+    {
+      "replaceAllText": {
+        "containsText": {
+          "text": "{{Email}}",
+          "matchCase": true
+        },
+        "replaceText": "${email}"
+      }
+    },
+    {
+      "replaceAllText": {
+        "containsText": {
+          "text": "{{QRcode}}",
+          "matchCase": true
+        },
+        "replaceText": ""
+      }
+    },
+    {
+      "replaceImage": {
+        "imageObjectId": "${rectangleImageId}",
+        "url": "${qrcode}"
+      }
+    }
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'update slide',
+      apiUrl:
+          'https://slides.googleapis.com/v1/presentations/${presentationId}:batchUpdate',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetTicketSlideDataCall {
+  static Future<ApiCallResponse> call({
+    String? presentationId = '',
+    String? accessToken = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'get ticket slide data',
+      apiUrl:
+          'https://slides.googleapis.com/v1/presentations/${presentationId}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

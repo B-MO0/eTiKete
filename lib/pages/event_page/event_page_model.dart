@@ -34,6 +34,13 @@ class EventPageModel extends FlutterFlowModel<EventPageWidget> {
       );
     }
 
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+    if (val.length > 15) {
+      return 'Maximum 15 characters allowed, currently ${val.length}.';
+    }
+
     return null;
   }
 
@@ -46,6 +53,13 @@ class EventPageModel extends FlutterFlowModel<EventPageWidget> {
       return FFLocalizations.of(context).getText(
         'kht44sby' /* Field is required */,
       );
+    }
+
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+    if (val.length > 15) {
+      return 'Maximum 15 characters allowed, currently ${val.length}.';
     }
 
     return null;
@@ -62,11 +76,16 @@ class EventPageModel extends FlutterFlowModel<EventPageWidget> {
       );
     }
 
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
     return null;
   }
 
   // Stores action output result for [Backend Call - API (add ticket to sheet)] action in Button widget.
   ApiCallResponse? sheetdata;
+  // Stores action output result for [Backend Call - API (get ticket slide data)] action in Button widget.
+  ApiCallResponse? qrholder;
 
   @override
   void initState(BuildContext context) {
