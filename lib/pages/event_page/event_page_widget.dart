@@ -742,121 +742,126 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                           0.0),
                                                               child:
                                                                   FFButtonWidget(
-                                                                onPressed:
-                                                                    () async {
-                                                                  if (_model.formKey
-                                                                              .currentState ==
-                                                                          null ||
-                                                                      !_model
-                                                                          .formKey
-                                                                          .currentState!
-                                                                          .validate()) {
-                                                                    return;
-                                                                  }
-                                                                  _model.tuid =
-                                                                      random_data
-                                                                          .randomString(
-                                                                    20,
-                                                                    30,
-                                                                    true,
-                                                                    false,
-                                                                    true,
-                                                                  );
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  _model.sheetdata =
-                                                                      await AddTicketToSheetCall
-                                                                          .call(
-                                                                    accessToken:
-                                                                        FFAppState()
-                                                                            .AccessToken,
-                                                                    fName: _model
-                                                                        .firstNameTextController
-                                                                        .text,
-                                                                    lName: _model
-                                                                        .lastNameTextController
-                                                                        .text,
-                                                                    email: _model
-                                                                        .emailTextController
-                                                                        .text,
-                                                                    spreadsheetId:
-                                                                        eventPageEventsRecord
-                                                                            .uid,
-                                                                    uid: _model
-                                                                        .tuid,
-                                                                  );
+                                                                onPressed: ((/* NOT RECOMMENDED */ _model.firstNameTextController.text == 'true') &&
+                                                                        (/* NOT RECOMMENDED */ _model.lastNameTextController.text ==
+                                                                            'true') &&
+                                                                        (/* NOT RECOMMENDED */ _model.emailTextController.text ==
+                                                                            'true'))
+                                                                    ? null
+                                                                    : () async {
+                                                                        if (_model.formKey.currentState ==
+                                                                                null ||
+                                                                            !_model.formKey.currentState!.validate()) {
+                                                                          return;
+                                                                        }
+                                                                        _model.tuid =
+                                                                            random_data.randomString(
+                                                                          20,
+                                                                          30,
+                                                                          true,
+                                                                          false,
+                                                                          true,
+                                                                        );
+                                                                        safeSetState(
+                                                                            () {});
+                                                                        _model.sheetdata =
+                                                                            await AddTicketToSheetCall.call(
+                                                                          accessToken:
+                                                                              FFAppState().AccessToken,
+                                                                          fName: _model
+                                                                              .firstNameTextController
+                                                                              .text,
+                                                                          lName: _model
+                                                                              .lastNameTextController
+                                                                              .text,
+                                                                          email: _model
+                                                                              .emailTextController
+                                                                              .text,
+                                                                          spreadsheetId:
+                                                                              eventPageEventsRecord.uid,
+                                                                          uid: _model
+                                                                              .tuid,
+                                                                        );
 
-                                                                  if ((_model
-                                                                          .sheetdata
-                                                                          ?.succeeded ??
-                                                                      true)) {
-                                                                    await TicketsRecord.createDoc(widget!
-                                                                            .receiveEvent!)
-                                                                        .set(
-                                                                            createTicketsRecordData(
-                                                                      firstName: _model
-                                                                          .firstNameTextController
-                                                                          .text,
-                                                                      lastName: _model
-                                                                          .lastNameTextController
-                                                                          .text,
-                                                                      email:
-                                                                          currentUserEmail,
-                                                                      uid: _model
-                                                                          .tuid,
-                                                                      eref: widget!
-                                                                          .receiveEvent,
-                                                                      qrlink:
-                                                                          'https://quickchart.io/qr?text=${_model.tuid}',
-                                                                      range:
-                                                                          getJsonField(
-                                                                        (_model.sheetdata?.jsonBody ??
-                                                                            ''),
-                                                                        r'''$.updates.updatedRange''',
-                                                                      ).toString(),
-                                                                    ));
-                                                                    safeSetState(
-                                                                        () {
-                                                                      _model
-                                                                          .firstNameTextController
-                                                                          ?.clear();
-                                                                      _model
-                                                                          .lastNameTextController
-                                                                          ?.clear();
-                                                                      _model
-                                                                          .emailTextController
-                                                                          ?.clear();
-                                                                    });
-                                                                  } else {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .clearSnackBars();
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          'ticket creation failed !! Please try again',
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBackground,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                        ),
-                                                                        duration:
-                                                                            Duration(milliseconds: 3000),
-                                                                        backgroundColor:
-                                                                            FlutterFlowTheme.of(context).alternate,
-                                                                      ),
-                                                                    );
-                                                                  }
+                                                                        if ((_model.sheetdata?.succeeded ??
+                                                                            true)) {
+                                                                          _model.qrholder =
+                                                                              await GetTicketSlideDataCall.call(
+                                                                            accessToken:
+                                                                                FFAppState().AccessToken,
+                                                                            presentationId:
+                                                                                '1GnHwebYS7YPyx4aDd0Zkoj2URcLSYztlpwA7X9mlJoQ',
+                                                                          );
 
-                                                                  safeSetState(
-                                                                      () {});
-                                                                },
+                                                                          await UpdateSlideCall
+                                                                              .call(
+                                                                            accessToken:
+                                                                                FFAppState().AccessToken,
+                                                                            firstname:
+                                                                                _model.firstNameTextController.text,
+                                                                            lastname:
+                                                                                _model.lastNameTextController.text,
+                                                                            email:
+                                                                                _model.emailTextController.text,
+                                                                            presentationId:
+                                                                                '1GnHwebYS7YPyx4aDd0Zkoj2URcLSYztlpwA7X9mlJoQ',
+                                                                            qrcode:
+                                                                                'https://quickchart.io/qr?text=${_model.tuid}',
+                                                                            rectangleImageId:
+                                                                                getJsonField(
+                                                                              (_model.qrholder?.jsonBody ?? ''),
+                                                                              r'''$.slides[*].pageElements[?(@.description == '{{qrcode}}')].objectId''',
+                                                                            ).toString(),
+                                                                          );
+
+                                                                          await TicketsRecord.createDoc(widget!.receiveEvent!)
+                                                                              .set(createTicketsRecordData(
+                                                                            firstName:
+                                                                                _model.firstNameTextController.text,
+                                                                            lastName:
+                                                                                _model.lastNameTextController.text,
+                                                                            email:
+                                                                                _model.emailTextController.text,
+                                                                            uid:
+                                                                                _model.tuid,
+                                                                            eref:
+                                                                                widget!.receiveEvent,
+                                                                            qrlink:
+                                                                                'https://quickchart.io/qr?text=${_model.tuid}',
+                                                                            range:
+                                                                                getJsonField(
+                                                                              (_model.sheetdata?.jsonBody ?? ''),
+                                                                              r'''$.updates.updatedRange''',
+                                                                            ).toString(),
+                                                                          ));
+                                                                          safeSetState(
+                                                                              () {
+                                                                            _model.firstNameTextController?.clear();
+                                                                            _model.lastNameTextController?.clear();
+                                                                            _model.emailTextController?.clear();
+                                                                          });
+                                                                        } else {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .clearSnackBars();
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text(
+                                                                                'ticket creation failed !! Please try again',
+                                                                                style: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                ),
+                                                                              ),
+                                                                              duration: Duration(milliseconds: 3000),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).alternate,
+                                                                            ),
+                                                                          );
+                                                                        }
+
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
                                                                 text: FFLocalizations.of(
                                                                         context)
                                                                     .getText(
@@ -895,21 +900,18 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                       ),
                                                                   elevation:
                                                                       2.0,
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    width: 4.0,
-                                                                  ),
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
                                                                               8.0),
-                                                                  hoverBorderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                    width: 4.0,
-                                                                  ),
+                                                                  disabledColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  disabledTextColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryBackground,
                                                                   hoverElevation:
                                                                       4.0,
                                                                 ),
