@@ -52,7 +52,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     return null;
   }
 
-  // Stores action output result for [Backend Call - API (create an event sheet)] action in Button widget.
+  // Stores action output result for [Backend Call - API (copy event sheet nd ticket slide )] action in Button widget.
   ApiCallResponse? sheetdata;
 
   @override

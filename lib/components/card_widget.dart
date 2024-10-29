@@ -135,7 +135,7 @@ class _CardWidgetState extends State<CardWidget> {
                           Expanded(
                             child: FFButtonWidget(
                               onPressed: () async {
-                                await DeleteEventSheetCall.call(
+                                await DeleteFileFromDriveCall.call(
                                   fileId: widget!.parameter2,
                                   accessToken: FFAppState().AccessToken,
                                 );
