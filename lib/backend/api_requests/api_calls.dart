@@ -118,7 +118,7 @@ class CreateAppFolderCall {
   }
 }
 
-class CreateAnEventSheetCall {
+class CopyEventSheetNdTicketSlideCall {
   static Future<ApiCallResponse> call({
     String? fileId = '1a-uDnjomlP5FGs90Gyfiwx0Sa2SAvUxwoFJX8UWY9pE',
     String? accessToken = '',
@@ -131,7 +131,7 @@ class CreateAnEventSheetCall {
   "parents": ["${parents}"]
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'create an event sheet',
+      callName: 'copy event sheet nd ticket slide ',
       apiUrl: 'https://www.googleapis.com/drive/v3/files/${fileId}/copy',
       callType: ApiCallType.POST,
       headers: {
@@ -151,13 +151,13 @@ class CreateAnEventSheetCall {
   }
 }
 
-class DeleteEventSheetCall {
+class DeleteFileFromDriveCall {
   static Future<ApiCallResponse> call({
     String? fileId = '',
     String? accessToken = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'delete event sheet',
+      callName: 'delete file from drive',
       apiUrl: 'https://www.googleapis.com/drive/v3/files/${fileId}',
       callType: ApiCallType.DELETE,
       headers: {
@@ -309,6 +309,30 @@ class GetTicketSlideDataCall {
       callName: 'get ticket slide data',
       apiUrl:
           'https://slides.googleapis.com/v1/presentations/${presentationId}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ExportFromDriveCall {
+  static Future<ApiCallResponse> call({
+    String? fileId = '',
+    String? accessToken = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Export from drive',
+      apiUrl:
+          'https://slides.googleapis.com/v1/presentations/${fileId}/pages/p/thumbnail',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${accessToken}',

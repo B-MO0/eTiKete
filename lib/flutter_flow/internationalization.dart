@@ -462,13 +462,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
+    'ma77x67w': {
+      'en': 'Change ticket design',
+      'id': 'Pelanggan',
+      'ms': 'Pelanggan',
+    },
     'ai25nob0': {
       'en': 'Tickets:',
       'id': '',
       'ms': '',
     },
-    's9tyor0r': {
-      'en': 'Delete',
+    'myu8xe5y': {
+      'en': '',
       'id': '',
       'ms': '',
     },

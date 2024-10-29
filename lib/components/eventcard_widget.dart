@@ -123,7 +123,7 @@ class _EventcardWidgetState extends State<EventcardWidget> {
                       Expanded(
                         child: FFButtonWidget(
                           onPressed: () async {
-                            await DeleteEventSheetCall.call(
+                            await DeleteFileFromDriveCall.call(
                               fileId: widget!.parameter2,
                               accessToken: FFAppState().AccessToken,
                             );

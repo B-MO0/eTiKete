@@ -51,6 +51,11 @@ class TicketsRecord extends FirestoreRecord {
   String get qrlink => _qrlink ?? '';
   bool hasQrlink() => _qrlink != null;
 
+  // "tkurl" field.
+  String? _tkurl;
+  String get tkurl => _tkurl ?? '';
+  bool hasTkurl() => _tkurl != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -61,6 +66,7 @@ class TicketsRecord extends FirestoreRecord {
     _range = snapshotData['range'] as String?;
     _eref = snapshotData['eref'] as DocumentReference?;
     _qrlink = snapshotData['qrlink'] as String?;
+    _tkurl = snapshotData['tkurl'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -110,6 +116,7 @@ Map<String, dynamic> createTicketsRecordData({
   String? range,
   DocumentReference? eref,
   String? qrlink,
+  String? tkurl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -120,6 +127,7 @@ Map<String, dynamic> createTicketsRecordData({
       'range': range,
       'eref': eref,
       'qrlink': qrlink,
+      'tkurl': tkurl,
     }.withoutNulls,
   );
 
@@ -137,7 +145,8 @@ class TicketsRecordDocumentEquality implements Equality<TicketsRecord> {
         e1?.uid == e2?.uid &&
         e1?.range == e2?.range &&
         e1?.eref == e2?.eref &&
-        e1?.qrlink == e2?.qrlink;
+        e1?.qrlink == e2?.qrlink &&
+        e1?.tkurl == e2?.tkurl;
   }
 
   @override
@@ -148,7 +157,8 @@ class TicketsRecordDocumentEquality implements Equality<TicketsRecord> {
         e?.uid,
         e?.range,
         e?.eref,
-        e?.qrlink
+        e?.qrlink,
+        e?.tkurl
       ]);
 
   @override

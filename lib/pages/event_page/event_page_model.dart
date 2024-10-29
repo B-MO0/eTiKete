@@ -5,11 +5,12 @@ import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'event_page_widget.dart' show EventPageWidget;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -84,8 +85,12 @@ class EventPageModel extends FlutterFlowModel<EventPageWidget> {
 
   // Stores action output result for [Backend Call - API (add ticket to sheet)] action in Button widget.
   ApiCallResponse? sheetdata;
+  // Stores action output result for [Backend Call - API (copy event sheet nd ticket slide )] action in Button widget.
+  ApiCallResponse? slidedata;
   // Stores action output result for [Backend Call - API (get ticket slide data)] action in Button widget.
   ApiCallResponse? qrholder;
+  // Stores action output result for [Backend Call - API (Export from drive)] action in Button widget.
+  ApiCallResponse? ticketimg;
 
   @override
   void initState(BuildContext context) {

@@ -1715,7 +1715,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                                             context,
                                                                                             'dummy2',
                                                                                           );
-                                                                                          _model.sheetdata = await CreateAnEventSheetCall.call(
+                                                                                          _model.sheetdata = await CopyEventSheetNdTicketSlideCall.call(
                                                                                             accessToken: FFAppState().AccessToken,
                                                                                             name: _model.eventNameTextController.text,
                                                                                             parents: FFAppState().drfId,
