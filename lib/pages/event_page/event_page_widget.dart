@@ -330,7 +330,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                     .fromSTEB(
                                                                         30.0,
                                                                         0.0,
-                                                                        30.0,
+                                                                        40.0,
                                                                         0.0),
                                                                 child: Row(
                                                                   mainAxisSize:
@@ -421,7 +421,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                     .fromSTEB(
                                                                         30.0,
                                                                         0.0,
-                                                                        30.0,
+                                                                        40.0,
                                                                         0.0),
                                                                 child: Row(
                                                                   mainAxisSize:
@@ -463,7 +463,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                               height: 80.0,
                                                                               padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 0.0, 4.0),
                                                                               iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                              color: FFAppState().ticketdesign == '1v7mLMtsUHvuUYbsIIPMOpgLNH_ZC-2sd7km-iYZxknI' ? FlutterFlowTheme.of(context).secondary : Color(0x0018AA99),
+                                                                              color: FFAppState().ticketdesign == '17fuzwVDTgf_54DmE74jNsic4VLbvwyM6kzbKA4g_BHw' ? FlutterFlowTheme.of(context).secondary : Color(0x0018AA99),
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                     color: Colors.white,
