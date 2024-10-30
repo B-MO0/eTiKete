@@ -407,6 +407,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': 'Pelanggan',
       'ms': 'Pelanggan',
     },
+    'ma77x67w': {
+      'en': 'choose ticket design :',
+      'id': 'Pelanggan',
+      'ms': 'Pelanggan',
+    },
+    'mqzgwqxq': {
+      'en': '',
+      'id': '',
+      'ms': '',
+    },
+    'qod3i4sf': {
+      'en': '',
+      'id': '',
+      'ms': '',
+    },
     'q358g84o': {
       'en': 'Create a ticket :',
       'id': 'Pelanggan',
@@ -461,11 +476,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
-    },
-    'ma77x67w': {
-      'en': 'Change ticket design :',
-      'id': 'Pelanggan',
-      'ms': 'Pelanggan',
     },
     'ai25nob0': {
       'en': 'Tickets:',

@@ -34,6 +34,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _drfId = prefs.getString('ff_drfId') ?? _drfId;
     });
+    _safeInit(() {
+      _ticketdesign = prefs.getString('ff_ticketdesign') ?? _ticketdesign;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -106,6 +109,13 @@ class FFAppState extends ChangeNotifier {
   String get ticketdata => _ticketdata;
   set ticketdata(String value) {
     _ticketdata = value;
+  }
+
+  String _ticketdesign = '';
+  String get ticketdesign => _ticketdesign;
+  set ticketdesign(String value) {
+    _ticketdesign = value;
+    prefs.setString('ff_ticketdesign', value);
   }
 }
 

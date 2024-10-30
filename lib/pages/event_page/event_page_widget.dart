@@ -12,6 +12,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,13 @@ class _EventPageWidgetState extends State<EventPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EventPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().ticketdesign =
+          '1v7mLMtsUHvuUYbsIIPMOpgLNH_ZC-2sd7km-iYZxknI';
+      safeSetState(() {});
+    });
 
     _model.firstNameTextController ??= TextEditingController();
     _model.firstNameFocusNode ??= FocusNode();
@@ -253,6 +261,256 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
+                                          Expanded(
+                                            flex: 3,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 8.0,
+                                                                0.0, 0.0),
+                                                    child: AutoSizeText(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'ma77x67w' /* choose ticket design : */,
+                                                      ),
+                                                      minFontSize: 8.0,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .displaySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .displaySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                                fontSize: 30.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .displaySmallFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  2.0,
+                                                                  0.0,
+                                                                  6.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30.0,
+                                                                        0.0,
+                                                                        30.0,
+                                                                        0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      flex: 1,
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              5.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              FFButtonWidget(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              FFAppState().ticketdesign = '1v7mLMtsUHvuUYbsIIPMOpgLNH_ZC-2sd7km-iYZxknI';
+                                                                              safeSetState(() {});
+                                                                            },
+                                                                            text:
+                                                                                FFLocalizations.of(context).getText(
+                                                                              'mqzgwqxq' /*  */,
+                                                                            ),
+                                                                            icon:
+                                                                                FaIcon(
+                                                                              FontAwesomeIcons.check,
+                                                                              size: 15.0,
+                                                                            ),
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 80.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 0.0, 4.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FFAppState().ticketdesign == '1v7mLMtsUHvuUYbsIIPMOpgLNH_ZC-2sd7km-iYZxknI' ? FlutterFlowTheme.of(context).secondary : Color(0x0018AA99),
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                    color: Colors.white,
+                                                                                    fontSize: 12.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                  ),
+                                                                              elevation: 2.0,
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                width: 5.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(12.0),
+                                                                              hoverColor: FlutterFlowTheme.of(context).secondary,
+                                                                              hoverElevation: 3.0,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 5,
+                                                                      child:
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                        child: Image
+                                                                            .asset(
+                                                                          'assets/images/standard_etikete.png',
+                                                                          fit: BoxFit
+                                                                              .fill,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30.0,
+                                                                        0.0,
+                                                                        30.0,
+                                                                        0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      flex: 1,
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              5.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              FFButtonWidget(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              FFAppState().ticketdesign = '17fuzwVDTgf_54DmE74jNsic4VLbvwyM6kzbKA4g_BHw';
+                                                                              safeSetState(() {});
+                                                                            },
+                                                                            text:
+                                                                                FFLocalizations.of(context).getText(
+                                                                              'qod3i4sf' /*  */,
+                                                                            ),
+                                                                            icon:
+                                                                                FaIcon(
+                                                                              FontAwesomeIcons.check,
+                                                                              size: 15.0,
+                                                                            ),
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 80.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 0.0, 4.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FFAppState().ticketdesign == '1v7mLMtsUHvuUYbsIIPMOpgLNH_ZC-2sd7km-iYZxknI' ? FlutterFlowTheme.of(context).secondary : Color(0x0018AA99),
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                    color: Colors.white,
+                                                                                    fontSize: 12.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                  ),
+                                                                              elevation: 2.0,
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                width: 5.0,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(12.0),
+                                                                              hoverColor: FlutterFlowTheme.of(context).secondary,
+                                                                              hoverElevation: 3.0,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 5,
+                                                                      child:
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                        child: Image
+                                                                            .asset(
+                                                                          'assets/images/etikete_Pink.png',
+                                                                          fit: BoxFit
+                                                                              .fill,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
                                           Expanded(
                                             flex: 3,
                                             child: Padding(
@@ -811,7 +1069,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                             _model.slidedata =
                                                                                 await CopyEventSheetNdTicketSlideCall.call(
                                                                               accessToken: FFAppState().AccessToken,
-                                                                              fileId: '1v7mLMtsUHvuUYbsIIPMOpgLNH_ZC-2sd7km-iYZxknI',
+                                                                              fileId: FFAppState().ticketdesign,
                                                                               name: _model.emailTextController.text,
                                                                               parents: FFAppState().drfId,
                                                                             );
@@ -944,8 +1202,12 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                               FlutterFlowTheme.of(context).titleSmallFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primary,
+                                                                          fontSize:
+                                                                              18.0,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
                                                                           useGoogleFonts:
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                         ),
@@ -968,176 +1230,6 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                             ),
                                                           ],
                                                         ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            flex: 3,
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: AutoSizeText(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'ma77x67w' /* Change ticket design : */,
-                                                      ),
-                                                      minFontSize: 8.0,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .displaySmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmallFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                                fontSize: 30.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .displaySmallFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  2.0,
-                                                                  0.0,
-                                                                  6.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            flex: 1,
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          4.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          40.0,
-                                                                          0.0,
-                                                                          40.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Material(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        elevation:
-                                                                            2.0,
-                                                                        child:
-                                                                            Container(
-                                                                          decoration:
-                                                                              BoxDecoration(),
-                                                                          child:
-                                                                              ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            child:
-                                                                                Image.asset(
-                                                                              'assets/images/standard_etikete.png',
-                                                                              fit: BoxFit.fill,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 1,
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          4.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          40.0,
-                                                                          0.0,
-                                                                          40.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Material(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        elevation:
-                                                                            2.0,
-                                                                        child:
-                                                                            Container(
-                                                                          decoration:
-                                                                              BoxDecoration(),
-                                                                          child:
-                                                                              ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                            child:
-                                                                                Image.asset(
-                                                                              'assets/images/etikete_Pink.png',
-                                                                              fit: BoxFit.fill,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
                                                       ),
                                                     ),
                                                   ),
