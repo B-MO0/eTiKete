@@ -147,6 +147,11 @@ bool _isSupportedLocale(Locale locale) {
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Login
   {
+    'r856umnk': {
+      'en': 'eTiKete',
+      'id': '',
+      'ms': '',
+    },
     'bmm6w0kk': {
       'en': 'Home',
       'id': '',
