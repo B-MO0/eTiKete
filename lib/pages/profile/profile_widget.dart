@@ -13,6 +13,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'profile_model.dart';
 export 'profile_model.dart';
 
@@ -218,12 +219,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                         barrierColor: Color(0x1A000000),
                                         context: context,
                                         builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: Container(
-                                              height: double.infinity,
-                                              child: CommandPaletteWidget(),
+                                          return WebViewAware(
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: Container(
+                                                height: double.infinity,
+                                                child: CommandPaletteWidget(),
+                                              ),
                                             ),
                                           );
                                         },

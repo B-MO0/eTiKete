@@ -111,7 +111,10 @@ class _CardWidgetState extends State<CardWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   4.0, 0.0, 0.0, 0.0),
                               child: AutoSizeText(
-                                widget!.parameter1!.maybeHandleOverflow(
+                                valueOrDefault<String>(
+                                  widget!.parameter1,
+                                  'Event :',
+                                ).maybeHandleOverflow(
                                   maxChars: 15,
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -121,7 +124,7 @@ class _CardWidgetState extends State<CardWidget> {
                                           .titleMediumFamily,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      fontSize: 30.0,
+                                      fontSize: 50.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
@@ -179,14 +182,14 @@ class _CardWidgetState extends State<CardWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(4.0, 6.0, 0.0, 0.0),
                       child: Text(
-                        widget!.parameter4!.toString(),
+                        'Created : ${widget!.parameter2}',
                         style:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
-                                  fontSize: 10.0,
+                                  fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)

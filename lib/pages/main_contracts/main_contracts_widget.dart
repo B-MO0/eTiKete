@@ -11,6 +11,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_contracts_model.dart';
 export 'main_contracts_model.dart';
 
@@ -398,18 +399,20 @@ class _MainContractsWidgetState extends State<MainContractsWidget>
                                             barrierColor: Color(0x1A000000),
                                             context: context,
                                             builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: Container(
-                                                    height: double.infinity,
-                                                    child:
-                                                        CommandPaletteWidget(),
+                                              return WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () =>
+                                                      FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: Container(
+                                                      height: double.infinity,
+                                                      child:
+                                                          CommandPaletteWidget(),
+                                                    ),
                                                   ),
                                                 ),
                                               );

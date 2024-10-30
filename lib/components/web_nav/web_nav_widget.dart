@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'web_nav_model.dart';
 export 'web_nav_model.dart';
 
@@ -138,9 +139,11 @@ class _WebNavWidgetState extends State<WebNavWidget> {
                       barrierColor: Color(0x34000000),
                       context: context,
                       builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.viewInsetsOf(context),
-                          child: CommandPaletteWidget(),
+                        return WebViewAware(
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: CommandPaletteWidget(),
+                          ),
                         );
                       },
                     ).then((value) => safeSetState(() {}));

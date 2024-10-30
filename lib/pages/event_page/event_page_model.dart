@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/tick_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +9,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'event_page_widget.dart' show EventPageWidget;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -91,6 +94,8 @@ class EventPageModel extends FlutterFlowModel<EventPageWidget> {
   ApiCallResponse? qrholder;
   // Stores action output result for [Backend Call - API (Export from drive)] action in Button widget.
   ApiCallResponse? ticketimg;
+  // Stores action output result for [Backend Call - API (save ticket)] action in Button widget.
+  ApiCallResponse? ticketfileid;
 
   @override
   void initState(BuildContext context) {

@@ -8,6 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -135,11 +136,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         barrierColor: FlutterFlowTheme.of(context).overlay,
                         context: context,
                         builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: Container(
-                              height: 360.0,
-                              child: EditProfilePhotoWidget(),
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: Container(
+                                height: 360.0,
+                                child: EditProfilePhotoWidget(),
+                              ),
                             ),
                           );
                         },
