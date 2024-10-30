@@ -622,8 +622,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
     return StreamBuilder<List<EventsRecord>>(
       stream: queryEventsRecord(
-        queryBuilder: (eventsRecord) =>
-            eventsRecord.orderBy('created_time', descending: true),
+        queryBuilder: (eventsRecord) => eventsRecord
+            .where(
+              'user',
+              isEqualTo: currentUserReference,
+            )
+            .orderBy('created_time', descending: true),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.

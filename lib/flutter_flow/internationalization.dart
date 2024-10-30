@@ -266,42 +266,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'Rumah',
     },
   },
-  // forgotPassword
-  {
-    '3hcuc8v6': {
-      'en': 'Forgot Password',
-      'id': 'Tidak ingat kata sandi',
-      'ms': 'Lupa kata laluan',
-    },
-    'sjjd1jb9': {
-      'en':
-          'Don\'t remember your password? Enter the email associated with your account below and we will send you a new link.',
-      'id':
-          'Tidak ingat kata sandi Anda? Masukkan email yang terkait dengan akun Anda di bawah ini dan kami akan mengirimkan tautan baru kepada Anda.',
-      'ms':
-          'Tidak ingat kata laluan anda? Masukkan e-mel yang dikaitkan dengan akaun anda di bawah dan kami akan menghantar pautan baharu kepada anda.',
-    },
-    'tzm5opaa': {
-      'en': 'Email Address',
-      'id': 'Alamat email',
-      'ms': 'Alamat emel',
-    },
-    'uvsotzng': {
-      'en': 'Please enter a valid email...',
-      'id': 'Tolong masukkan email yang benar...',
-      'ms': 'Sila masukkan e-mel yang sah...',
-    },
-    '3sdzjivm': {
-      'en': 'Send Reset Link',
-      'id': 'Kirim Setel Ulang Tautan',
-      'ms': 'Hantar Pautan Tetapan Semula',
-    },
-    '8p6xd6cl': {
-      'en': 'Home',
-      'id': 'Rumah',
-      'ms': 'Rumah',
-    },
-  },
   // Home
   {
     '3bi54x5g': {
@@ -762,12 +726,69 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'Profil saya',
     },
     'fyxsf6vn': {
-      'en': 'Complete your profile',
+      'en':
+          'Please complete your profile and provide consent to begin using the app.',
       'id': 'Pengaturan akun',
       'ms': 'Tetapan Akaun',
     },
+    '1btinzv1': {
+      'en': 'Phone number *',
+      'id': 'Alamat email',
+      'ms': 'Alamat emel',
+    },
+    'rl8ugf4u': {
+      'en': 'Enter your phone number here...',
+      'id': 'Masukkan email Anda disini...',
+      'ms': 'Masukkan e-mel anda di sini...',
+    },
+    'p0lcsnmt': {
+      'en': 'Address *',
+      'id': 'Alamat email',
+      'ms': 'Alamat emel',
+    },
+    'qvxxuqtm': {
+      'en': 'Enter your address here...',
+      'id': 'Masukkan email Anda disini...',
+      'ms': 'Masukkan e-mel anda di sini...',
+    },
+    'az1ot3qi': {
+      'en': 'Student',
+      'id': '',
+      'ms': '',
+    },
+    '9hbi3y8q': {
+      'en': 'Teacher',
+      'id': '',
+      'ms': '',
+    },
+    '4vr6bzvi': {
+      'en': 'Business owner',
+      'id': '',
+      'ms': '',
+    },
+    '2e5ffx8e': {
+      'en': 'Profession *',
+      'id': '',
+      'ms': '',
+    },
+    'hsmzomiy': {
+      'en': 'Search...',
+      'id': '',
+      'ms': '',
+    },
+    '947xyt76': {
+      'en':
+          'Welcome to eTiKete. By using this app, you agree to grant permissions for specific Google APIs, including Drive, Apps Script, Slides, and Sheets, to enable seamless functionality. These permissions allow us to create, edit, and modify files within a designated folder in your Google Drive, which the app will establish upon setup. Rest assured, we will only access and manage files within this folder; no data outside this folder will be accessible or modified by us.\n\nTo proceed, please review and accept these terms by checking the box below and clicking the \"Consent\" button to authorize permissions. Enjoy your experience with our etikete!',
+      'id': '',
+      'ms': '',
+    },
+    '4liiy493': {
+      'en': 'I agree to the terms of service .',
+      'id': '',
+      'ms': '',
+    },
     'abqf147c': {
-      'en': 'CONSENT',
+      'en': 'Grant all permissions ',
       'id': 'Keluar',
       'ms': 'Log keluar',
     },
@@ -775,110 +796,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '__',
       'id': '__',
       'ms': '__',
-    },
-  },
-  // userDetails
-  {
-    'obyrn1rb': {
-      'en': 'Customer Name',
-      'id': 'Nama Pelanggan',
-      'ms': 'Nama Pelanggan',
-    },
-    '00sam6zz': {
-      'en': 'Randy Alcorn',
-      'id': 'Randy Alcorn',
-      'ms': 'Randy Alcorn',
-    },
-    'nxuoeukv': {
-      'en': 'High Profile',
-      'id': 'Kalangan atas',
-      'ms': 'Profil tinggi',
-    },
-    'ecbeopja': {
-      'en': 'Title',
-      'id': 'Judul',
-      'ms': 'Tajuk',
-    },
-    'xf6clrz6': {
-      'en': 'Head of Procurement',
-      'id': 'Kepala Pengadaan',
-      'ms': 'Ketua Perolehan',
-    },
-    'kl55bl1c': {
-      'en': 'Company',
-      'id': 'Perusahaan',
-      'ms': 'Syarikat',
-    },
-    'nh9bkr5i': {
-      'en': 'ACME Co.',
-      'id': 'ACME Co.',
-      'ms': 'ACME Co.',
-    },
-    'dkyygm1d': {
-      'en': 'Notes',
-      'id': 'Catatan',
-      'ms': 'Nota',
-    },
-    'p82rjlf3': {
-      'en': 'Alexandria Smith',
-      'id': 'Alexandria Smith',
-      'ms': 'Alexandria Smith',
-    },
-    '2s53b50t': {
-      'en': '1m ago',
-      'id': '1 menit yang lalu',
-      'ms': '1m lalu',
-    },
-    'rnaiavvh': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      'id':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      'ms':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboure et dolore magna aliqua. Untuk meminimumkan veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    'bujmmf46': {
-      'en': '8',
-      'id': '8',
-      'ms': '8',
-    },
-    'ntlrz0gk': {
-      'en': 'Notes',
-      'id': 'Catatan',
-      'ms': 'Nota',
-    },
-    'rw21s3dk': {
-      'en': 'Randy Alcorn',
-      'id': 'Randy Alcorn',
-      'ms': 'Randy Alcorn',
-    },
-    'mj096u71': {
-      'en':
-          'I\'m not really sure about this section here aI think you should do soemthing cool!',
-      'id':
-          'Saya tidak begitu yakin tentang bagian ini di sini saya pikir Anda harus melakukan sesuatu yang keren!',
-      'ms':
-          'Saya tidak begitu pasti tentang bahagian ini di sini kerana saya fikir anda perlu melakukan sesuatu yang menarik!',
-    },
-    '1n2y2xin': {
-      'en': 'a min ago',
-      'id': 'beberapa menit yang lalu',
-      'ms': 'min yang lalu',
-    },
-    'ojneuoau': {
-      'en': 'Generate Quote',
-      'id': 'Hasilkan Penawaran',
-      'ms': 'Hasilkan Petikan',
-    },
-    'suvzdvvk': {
-      'en': 'View Company',
-      'id': 'Lihat Perusahaan',
-      'ms': 'Lihat Syarikat',
-    },
-    '9t913b44': {
-      'en': 'Home',
-      'id': 'Rumah',
-      'ms': 'Rumah',
     },
   },
   // editProfile
@@ -1118,57 +1035,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '__',
     },
   },
-  // modal_success
-  {
-    'kred63vb': {
-      'en': 'Send Contract Confirmation',
-      'id': 'Kirim Konfirmasi Kontrak',
-      'ms': 'Hantar Pengesahan Kontrak',
-    },
-    'hywgg8eu': {
-      'en': 'A new contract has been generated for:',
-      'id': 'Kontrak baru telah dibuat untuk:',
-      'ms': 'Kontrak baru telah dijana untuk:',
-    },
-    'kmp2gbpy': {
-      'en': 'Randy Alcorn',
-      'id': 'Randy Alcorn',
-      'ms': 'Randy Alcorn',
-    },
-    'a7nc1dt4': {
-      'en': 'Head of Procurement',
-      'id': 'Kepala Pengadaan',
-      'ms': 'Ketua Perolehan',
-    },
-    '2f2nxucv': {
-      'en': 'ACME Co.',
-      'id': 'ACME Co.',
-      'ms': 'ACME Co.',
-    },
-    'vcm4fijj': {
-      'en': 'Next Steps',
-      'id': 'Langkah selanjutnya',
-      'ms': 'Langkah seterusnya',
-    },
-    '60n0fqw5': {
-      'en':
-          'Send the information below. And we will send an email with details to the customer and allow you to manage it in your dashboard.',
-      'id':
-          'Kirim informasi di bawah ini. Dan kami akan mengirimkan email dengan detail kepada pelanggan dan memungkinkan Anda untuk mengelolanya di dasbor Anda.',
-      'ms':
-          'Hantar maklumat di bawah. Dan kami akan menghantar e-mel dengan butiran kepada pelanggan dan membenarkan anda mengurusnya dalam papan pemuka anda.',
-    },
-    'e408bhw6': {
-      'en': 'Send Information',
-      'id': 'Kirim Informasi',
-      'ms': 'Hantar Maklumat',
-    },
-    'wo1onxhi': {
-      'en': 'Never Mind',
-      'id': 'Sudahlah',
-      'ms': 'Tidak mengapa',
-    },
-  },
   // modal_Message
   {
     'wa4vkne2': {
@@ -1262,11 +1128,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'My Team',
       'id': 'Kelompok ku',
       'ms': 'Pasukan saya',
-    },
-    'lbojdpxg': {
-      'en': 'Customers',
-      'id': 'Pelanggan',
-      'ms': 'Pelanggan',
     },
     '9pjba90p': {
       'en': 'Contracts',

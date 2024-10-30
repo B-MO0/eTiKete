@@ -98,11 +98,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => CreateAccountWidget(),
             ),
             FFRoute(
-              name: 'forgotPassword',
-              path: 'forgotPassword',
-              builder: (context, params) => ForgotPasswordWidget(),
-            ),
-            FFRoute(
               name: 'Home',
               path: 'home',
               requireAuth: true,
@@ -144,11 +139,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Complete_Profile')
                   : CompleteProfileWidget(),
-            ),
-            FFRoute(
-              name: 'userDetails',
-              path: 'userDetails',
-              builder: (context, params) => UserDetailsWidget(),
             ),
             FFRoute(
               name: 'editProfile',
