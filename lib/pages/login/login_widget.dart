@@ -72,15 +72,40 @@ class _LoginWidgetState extends State<LoginWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                68.0, 0.0, 0.0, 0.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/logo.png',
-                                width: 192.0,
-                                height: 84.0,
-                                fit: BoxFit.cover,
-                              ),
+                                70.0, 2.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 6.0, 0.0),
+                                  child: Icon(
+                                    Icons.qr_code,
+                                    color: Color(0xFF005185),
+                                    size: 48.0,
+                                  ),
+                                ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'r856umnk' /* eTiKete */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        fontSize: 48.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w800,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -214,7 +239,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Expanded(
@@ -330,10 +355,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           size: 15.0,
                                         ),
                                         options: FFButtonOptions(
-                                          height: 50.0,
+                                          height: 70.0,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
+                                                  22.0, 0.0, 22.0, 0.0),
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
@@ -369,6 +394,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           hoverTextColor:
                                               FlutterFlowTheme.of(context)
                                                   .primary,
+                                          hoverElevation: 4.0,
                                         ),
                                       ),
                                     ),
@@ -378,20 +404,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  80.0, 0.0, 0.0, 0.0),
+                                  26.0, 0.0, 70.0, 0.0),
                               child: Stack(
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.asset(
-                                        'assets/images/HEIMG.png',
-                                        width: 548.0,
-                                        height: 537.0,
-                                        fit: BoxFit.cover,
-                                      ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/HEIMG.png',
+                                      width: 548.0,
+                                      height: 537.0,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                   Align(
@@ -475,7 +497,7 @@ Free */
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.w600,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
