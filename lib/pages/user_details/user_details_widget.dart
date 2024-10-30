@@ -11,6 +11,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'user_details_model.dart';
 export 'user_details_model.dart';
 
@@ -731,12 +732,14 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                         barrierColor: Color(0x9A000000),
                                         context: context,
                                         builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: Container(
-                                              height: 370.0,
-                                              child: CreateCommentWidget(),
+                                          return WebViewAware(
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: Container(
+                                                height: 370.0,
+                                                child: CreateCommentWidget(),
+                                              ),
                                             ),
                                           );
                                         },
@@ -1023,11 +1026,13 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                         barrierColor: Colors.transparent,
                         context: context,
                         builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: Container(
-                              height: double.infinity,
-                              child: ModalSuccessWidget(),
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: Container(
+                                height: double.infinity,
+                                child: ModalSuccessWidget(),
+                              ),
                             ),
                           );
                         },

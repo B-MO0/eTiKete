@@ -1,13 +1,16 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/tick_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -259,19 +262,20 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 0.0, 0.0),
-                                                    child: Text(
+                                                    child: AutoSizeText(
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
                                                         'q358g84o' /* Create a ticket : */,
                                                       ),
+                                                      minFontSize: 8.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -283,6 +287,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryBackground,
+                                                                fontSize: 30.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
@@ -332,6 +337,16 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                       .firstNameTextController,
                                                                   focusNode: _model
                                                                       .firstNameFocusNode,
+                                                                  onChanged: (_) =>
+                                                                      EasyDebounce
+                                                                          .debounce(
+                                                                    '_model.firstNameTextController',
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                    () => safeSetState(
+                                                                        () {}),
+                                                                  ),
                                                                   autofocus:
                                                                       false,
                                                                   obscureText:
@@ -466,6 +481,16 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                       .lastNameTextController,
                                                                   focusNode: _model
                                                                       .lastNameFocusNode,
+                                                                  onChanged: (_) =>
+                                                                      EasyDebounce
+                                                                          .debounce(
+                                                                    '_model.lastNameTextController',
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                    () => safeSetState(
+                                                                        () {}),
+                                                                  ),
                                                                   autofocus:
                                                                       false,
                                                                   obscureText:
@@ -600,6 +625,16 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                       .emailTextController,
                                                                   focusNode: _model
                                                                       .emailFocusNode,
+                                                                  onChanged: (_) =>
+                                                                      EasyDebounce
+                                                                          .debounce(
+                                                                    '_model.emailTextController',
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                    () => safeSetState(
+                                                                        () {}),
+                                                                  ),
                                                                   autofocus:
                                                                       false,
                                                                   obscureText:
@@ -815,22 +850,43 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                               ).toString(),
                                                                             );
 
-                                                                            await TicketsRecord.createDoc(widget!.receiveEvent!).set(createTicketsRecordData(
-                                                                              firstName: _model.firstNameTextController.text,
-                                                                              lastName: _model.lastNameTextController.text,
-                                                                              email: _model.emailTextController.text,
-                                                                              uid: _model.tuid,
-                                                                              eref: widget!.receiveEvent,
-                                                                              qrlink: 'https://quickchart.io/qr?text=${_model.tuid}',
-                                                                              range: getJsonField(
-                                                                                (_model.sheetdata?.jsonBody ?? ''),
-                                                                                r'''$.updates.updatedRange''',
-                                                                              ).toString(),
-                                                                              tkurl: getJsonField(
+                                                                            _model.ticketfileid =
+                                                                                await SaveTicketCall.call(
+                                                                              name: _model.tuid,
+                                                                              folderid: FFAppState().drfId,
+                                                                              imageurl: getJsonField(
                                                                                 (_model.ticketimg?.jsonBody ?? ''),
                                                                                 r'''$.contentUrl''',
                                                                               ).toString(),
-                                                                            ));
+                                                                            );
+
+                                                                            await TicketsRecord.createDoc(widget!.receiveEvent!).set({
+                                                                              ...createTicketsRecordData(
+                                                                                firstName: _model.firstNameTextController.text,
+                                                                                lastName: _model.lastNameTextController.text,
+                                                                                email: _model.emailTextController.text,
+                                                                                uid: _model.tuid,
+                                                                                eref: widget!.receiveEvent,
+                                                                                qrlink: 'https://quickchart.io/qr?text=${_model.tuid}',
+                                                                                range: getJsonField(
+                                                                                  (_model.sheetdata?.jsonBody ?? ''),
+                                                                                  r'''$.updates.updatedRange''',
+                                                                                ).toString(),
+                                                                                tkurl: 'https://drive.google.com/file/d/${getJsonField(
+                                                                                  (_model.ticketfileid?.jsonBody ?? ''),
+                                                                                  r'''$.fileId''',
+                                                                                ).toString()}/preview',
+                                                                                sid: getJsonField(
+                                                                                  (_model.ticketfileid?.jsonBody ?? ''),
+                                                                                  r'''$.fileId''',
+                                                                                ).toString(),
+                                                                              ),
+                                                                              ...mapToFirestore(
+                                                                                {
+                                                                                  'created_time': FieldValue.serverTimestamp(),
+                                                                                },
+                                                                              ),
+                                                                            });
                                                                             safeSetState(() {
                                                                               _model.firstNameTextController?.clear();
                                                                               _model.lastNameTextController?.clear();
@@ -927,19 +983,20 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 0.0, 0.0),
-                                                    child: Text(
+                                                    child: AutoSizeText(
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'ma77x67w' /* Change ticket design */,
+                                                        'ma77x67w' /* Change ticket design : */,
                                                       ),
+                                                      minFontSize: 8.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -951,6 +1008,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryBackground,
+                                                                fontSize: 30.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
@@ -962,6 +1020,125 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .displaySmallFamily),
                                                               ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  2.0,
+                                                                  0.0,
+                                                                  6.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            flex: 1,
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          4.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          40.0,
+                                                                          0.0,
+                                                                          40.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        elevation:
+                                                                            2.0,
+                                                                        child:
+                                                                            Container(
+                                                                          decoration:
+                                                                              BoxDecoration(),
+                                                                          child:
+                                                                              ClipRRect(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                            child:
+                                                                                Image.asset(
+                                                                              'assets/images/standard_etikete.png',
+                                                                              fit: BoxFit.fill,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 1,
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          4.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          40.0,
+                                                                          0.0,
+                                                                          40.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        elevation:
+                                                                            2.0,
+                                                                        child:
+                                                                            Container(
+                                                                          decoration:
+                                                                              BoxDecoration(),
+                                                                          child:
+                                                                              ClipRRect(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                            child:
+                                                                                Image.asset(
+                                                                              'assets/images/etikete_Pink.png',
+                                                                              fit: BoxFit.fill,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -992,6 +1169,9 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                 child: StreamBuilder<List<TicketsRecord>>(
                                   stream: queryTicketsRecord(
                                     parent: widget!.receiveEvent,
+                                    queryBuilder: (ticketsRecord) =>
+                                        ticketsRecord.orderBy('created_time',
+                                            descending: true),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
@@ -1073,7 +1253,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          5.0, 0.0, 5.0, 0.0),
+                                                          5.0, 2.0, 5.0, 2.0),
                                                   child: Builder(
                                                     builder: (context) {
                                                       final sigleticket =
@@ -1086,9 +1266,9 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                         gridDelegate:
                                                             SliverGridDelegateWithFixedCrossAxisCount(
                                                           crossAxisCount: 3,
-                                                          crossAxisSpacing: 6.0,
-                                                          mainAxisSpacing: 2.0,
-                                                          childAspectRatio: 2.5,
+                                                          crossAxisSpacing: 8.0,
+                                                          mainAxisSpacing: 12.0,
+                                                          childAspectRatio: 2.0,
                                                         ),
                                                         scrollDirection:
                                                             Axis.vertical,
@@ -1099,127 +1279,135 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                           final sigleticketItem =
                                                               sigleticket[
                                                                   sigleticketIndex];
-                                                          return Stack(
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                            2.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.spaceBetween,
-                                                                        children: [
-                                                                          Expanded(
-                                                                            child:
-                                                                                Material(
-                                                                              color: Colors.transparent,
-                                                                              elevation: 2.0,
-                                                                              child: Container(
-                                                                                decoration: BoxDecoration(),
-                                                                                child: ClipRRect(
-                                                                                  borderRadius: BorderRadius.circular(8.0),
-                                                                                  child: Image.network(
-                                                                                    sigleticketItem.tkurl,
-                                                                                    fit: BoxFit.fill,
+                                                          return Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    2.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Expanded(
+                                                                  child:
+                                                                      TickWidget(
+                                                                    key: Key(
+                                                                        'Keygj2_${sigleticketIndex}_of_${sigleticket.length}'),
+                                                                    parameter1:
+                                                                        sigleticketItem
+                                                                            .tkurl,
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              8.0,
+                                                                              0.0,
+                                                                              4.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              FFButtonWidget(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              await DeleteFileFromDriveCall.call(
+                                                                                accessToken: FFAppState().AccessToken,
+                                                                                fileId: sigleticketItem.sid,
+                                                                              );
+
+                                                                              await sigleticketItem.reference.delete();
+                                                                            },
+                                                                            text:
+                                                                                FFLocalizations.of(context).getText(
+                                                                              '32c6oale' /* Delete */,
+                                                                            ),
+                                                                            icon:
+                                                                                FaIcon(
+                                                                              FontAwesomeIcons.trashAlt,
+                                                                              size: 15.0,
+                                                                            ),
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                              iconAlignment: IconAlignment.start,
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: Color(0xFFFF1F2D),
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                    color: Colors.white,
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                                   ),
-                                                                                ),
-                                                                              ),
+                                                                              elevation: 0.0,
+                                                                              borderRadius: BorderRadius.circular(8.0),
                                                                             ),
                                                                           ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.94,
-                                                                        -0.87),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    await sigleticketItem
-                                                                        .reference
-                                                                        .delete();
-                                                                  },
-                                                                  text: FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'myu8xe5y' /*  */,
-                                                                  ),
-                                                                  icon: FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .trashAlt,
-                                                                    size: 15.0,
-                                                                  ),
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            2.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0),
-                                                                    color: Color(
-                                                                        0x00FFFFFF),
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                          color:
-                                                                              Colors.white,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                         ),
-                                                                    elevation:
-                                                                        1.0,
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0xFFFF2A35),
-                                                                      width:
-                                                                          4.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    hoverColor:
-                                                                        Color(
-                                                                            0xFFFF2A35),
-                                                                    hoverElevation:
-                                                                        2.0,
+                                                                      ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              4.0,
+                                                                              0.0,
+                                                                              8.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              FFButtonWidget(
+                                                                            onPressed:
+                                                                                () {
+                                                                              print('Button pressed ...');
+                                                                            },
+                                                                            text:
+                                                                                FFLocalizations.of(context).getText(
+                                                                              'i17120v6' /* Mail */,
+                                                                            ),
+                                                                            icon:
+                                                                                FaIcon(
+                                                                              FontAwesomeIcons.solidEnvelope,
+                                                                              size: 15.0,
+                                                                            ),
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                    color: Colors.white,
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                  ),
+                                                                              elevation: 0.0,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           );
                                                         },
                                                       );
@@ -1233,6 +1421,15 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                       ),
                                     );
                                   },
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 20.0, 16.0, 0.0),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height: 60.0,
+                                  decoration: BoxDecoration(),
                                 ),
                               ),
                             ],

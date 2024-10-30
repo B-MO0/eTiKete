@@ -101,6 +101,12 @@ class FFAppState extends ChangeNotifier {
     _drfId = value;
     prefs.setString('ff_drfId', value);
   }
+
+  String _ticketdata = '';
+  String get ticketdata => _ticketdata;
+  set ticketdata(String value) {
+    _ticketdata = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

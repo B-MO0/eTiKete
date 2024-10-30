@@ -463,7 +463,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     'ma77x67w': {
-      'en': 'Change ticket design',
+      'en': 'Change ticket design :',
       'id': 'Pelanggan',
       'ms': 'Pelanggan',
     },
@@ -472,8 +472,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    'myu8xe5y': {
-      'en': '',
+    '32c6oale': {
+      'en': 'Delete',
+      'id': '',
+      'ms': '',
+    },
+    'i17120v6': {
+      'en': 'Mail',
       'id': '',
       'ms': '',
     },
@@ -1342,14 +1347,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sr54fsk6': {
       'en': 'Save Changes',
-      'id': '',
-      'ms': '',
-    },
-  },
-  // eventcard
-  {
-    'yr4tcrth': {
-      'en': 'Delete',
       'id': '',
       'ms': '',
     },

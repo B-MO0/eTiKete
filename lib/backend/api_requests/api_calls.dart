@@ -23,7 +23,7 @@ class GetAccessTokenAndRefreshTokenCall {
         'client_id':
             "364818987476-v8lv59fnr7qjo4s55e0ngr86idmigqdi.apps.googleusercontent.com",
         'client_secret': "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",
-        'redirect_uri': "https://etikete-7k15uq.flutterflow.app",
+        'redirect_uri': "https://etikete.flutterflow.app",
         'grant_type': "authorization_code",
       },
       bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
@@ -337,6 +337,29 @@ class ExportFromDriveCall {
       headers: {
         'Authorization': 'Bearer ${accessToken}',
       },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveTicketCall {
+  static Future<ApiCallResponse> call({
+    String? name = '',
+    String? folderid = '',
+    String? imageurl = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'save ticket',
+      apiUrl:
+          'https://script.google.com/macros/s/AKfycbxW1ezoCMEOUdXMATuJc5BOc49_q7YhydsZIS-VS86iC_8vNPP2bbDjQ29BdRFFNMsH/exec?imageUrl=${imageurl}&folderId=${folderid}&imageName=${name}',
+      callType: ApiCallType.GET,
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,

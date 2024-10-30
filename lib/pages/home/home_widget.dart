@@ -1970,8 +1970,14 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         oeventItem
                                                                             .name,
                                                                     parameter2:
-                                                                        oeventItem
-                                                                            .uid,
+                                                                        dateTimeFormat(
+                                                                      "d/M h:mm a",
+                                                                      oeventItem
+                                                                          .createdTime,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                                     parameter3:
                                                                         oeventItem
                                                                             .reference,
