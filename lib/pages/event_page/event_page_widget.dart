@@ -282,7 +282,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                           .getText(
                                                         'ma77x67w' /* choose ticket design : */,
                                                       ),
-                                                      minFontSize: 8.0,
+                                                      minFontSize: 1.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -533,7 +533,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                           .getText(
                                                         'q358g84o' /* Create a ticket : */,
                                                       ),
-                                                      minFontSize: 8.0,
+                                                      minFontSize: 1.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1023,7 +1023,9 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                             8.0),
                                                                 child:
                                                                     FFButtonWidget(
-                                                                  onPressed: ((/* NOT RECOMMENDED */ _model.firstNameTextController.text == 'true') &&
+                                                                  onPressed: ((_model.firstNameTextController.text == null ||
+                                                                              _model.firstNameTextController.text ==
+                                                                                  '') &&
                                                                           (/* NOT RECOMMENDED */ _model.lastNameTextController.text ==
                                                                               'true') &&
                                                                           (/* NOT RECOMMENDED */ _model.emailTextController.text ==
@@ -1417,6 +1419,12 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                               FFButtonWidget(
                                                                             onPressed:
                                                                                 () async {
+                                                                              await DeleteTicketFromSheetCall.call(
+                                                                                accessToken: FFAppState().AccessToken,
+                                                                                range: sigleticketItem.range,
+                                                                                sheetId: eventPageEventsRecord.uid,
+                                                                              );
+
                                                                               await DeleteFileFromDriveCall.call(
                                                                                 accessToken: FFAppState().AccessToken,
                                                                                 fileId: sigleticketItem.sid,

@@ -1,4 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -136,43 +138,92 @@ class _CardWidgetState extends State<CardWidget> {
                             ),
                           ),
                           Expanded(
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                await DeleteFileFromDriveCall.call(
-                                  fileId: widget!.parameter2,
-                                  accessToken: FFAppState().AccessToken,
-                                );
-
-                                await widget!.parameter3!.delete();
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                '8g6ovalp' /* Delete */,
+                            child: StreamBuilder<List<AppinfoRecord>>(
+                              stream: queryAppinfoRecord(
+                                queryBuilder: (appinfoRecord) =>
+                                    appinfoRecord.where(
+                                  'user',
+                                  isEqualTo: currentUserReference,
+                                ),
+                                singleRecord: true,
                               ),
-                              options: FFButtonOptions(
-                                height: 28.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 6.0, 10.0, 6.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xFFFF0C1D),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .titleSmallFamily,
-                                      color: Colors.white,
-                                      fontSize: 10.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
+                                      ),
                                     ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(8.0),
-                                hoverElevation: 2.0,
-                              ),
+                                  );
+                                }
+                                List<AppinfoRecord> buttonAppinfoRecordList =
+                                    snapshot.data!;
+                                // Return an empty Container when the item does not exist.
+                                if (snapshot.data!.isEmpty) {
+                                  return Container();
+                                }
+                                final buttonAppinfoRecord =
+                                    buttonAppinfoRecordList.isNotEmpty
+                                        ? buttonAppinfoRecordList.first
+                                        : null;
+
+                                return FFButtonWidget(
+                                  onPressed: () async {
+                                    await DeleteFileFromDriveCall.call(
+                                      fileId: widget!.parameter2,
+                                      accessToken: FFAppState().AccessToken,
+                                    );
+
+                                    await widget!.parameter3!.delete();
+
+                                    await buttonAppinfoRecord!.reference
+                                        .update({
+                                      ...mapToFirestore(
+                                        {
+                                          'totalevents':
+                                              FieldValue.increment(-(1)),
+                                        },
+                                      ),
+                                    });
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '8g6ovalp' /* Delete */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    height: 28.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 6.0, 10.0, 6.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFFFF0C1D),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: Colors.white,
+                                          fontSize: 10.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    hoverElevation: 2.0,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],
