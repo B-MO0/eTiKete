@@ -371,6 +371,35 @@ class SaveTicketCall {
   }
 }
 
+class DeleteTicketFromSheetCall {
+  static Future<ApiCallResponse> call({
+    String? sheetId = '',
+    String? accessToken = '',
+    String? range = '',
+  }) async {
+    final ffApiRequestBody = '''
+''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'delete ticket from sheet',
+      apiUrl:
+          'https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:clear',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${accessToken}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

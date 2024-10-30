@@ -139,8 +139,6 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'Main_Contracts': MainContractsWidget(),
-      'myTeam': MyTeamWidget(),
       'Complete_Profile': CompleteProfileWidget(),
       'Profile': ProfileWidget(),
     };
@@ -178,34 +176,6 @@ class _NavBarPageState extends State<NavBarPage> {
               ),
               label: FFLocalizations.of(context).getText(
                 'xdxbdj20' /* __ */,
-              ),
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_work_outlined,
-                size: 24.0,
-              ),
-              activeIcon: Icon(
-                Icons.home_work_rounded,
-                size: 32.0,
-              ),
-              label: FFLocalizations.of(context).getText(
-                'j08eiorc' /* __ */,
-              ),
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.stream,
-                size: 24.0,
-              ),
-              activeIcon: Icon(
-                Icons.stream,
-                size: 24.0,
-              ),
-              label: FFLocalizations.of(context).getText(
-                'smtxdnbn' /* __ */,
               ),
               tooltip: '',
             ),

@@ -93,11 +93,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
-              name: 'createAccount',
-              path: 'createAccount',
-              builder: (context, params) => CreateAccountWidget(),
-            ),
-            FFRoute(
               name: 'Home',
               path: 'home',
               requireAuth: true,
@@ -119,46 +114,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'Main_Contracts',
-              path: 'mainContracts',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Main_Contracts')
-                  : MainContractsWidget(),
-            ),
-            FFRoute(
-              name: 'myTeam',
-              path: 'myTeam',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'myTeam')
-                  : MyTeamWidget(),
-            ),
-            FFRoute(
               name: 'Complete_Profile',
               path: 'completeProfile',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Complete_Profile')
                   : CompleteProfileWidget(),
-            ),
-            FFRoute(
-              name: 'editProfile',
-              path: 'editProfile',
-              builder: (context, params) => EditProfileWidget(),
-            ),
-            FFRoute(
-              name: 'projectDetailsHealthAi',
-              path: 'projectDetailsHealthAi',
-              builder: (context, params) => ProjectDetailsHealthAiWidget(),
-            ),
-            FFRoute(
-              name: 'projectDetails',
-              path: 'projectDetails',
-              builder: (context, params) => ProjectDetailsWidget(),
-            ),
-            FFRoute(
-              name: 'searchPage',
-              path: 'searchPage',
-              builder: (context, params) => SearchPageWidget(),
             ),
             FFRoute(
               name: 'Profile',

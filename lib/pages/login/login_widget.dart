@@ -332,7 +332,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 0.0, 0.0),
+                                          0.0, 24.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           GoRouter.of(context)
@@ -410,17 +410,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
-                                      'assets/images/HEIMG.png',
+                                      'assets/images/Bmoo.png',
                                       width: 548.0,
                                       height: 537.0,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.84),
+                                    alignment:
+                                        AlignmentDirectional(-0.89, -5.3),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 387.0, 0.0, 0.0),
+                                          8.0, 313.0, 0.0, 0.0),
                                       child: Container(
                                         width: 237.0,
                                         height: 110.0,
