@@ -164,7 +164,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          '6aekhg5v' /* Sign Up */,
+                                          '6aekhg5v' /* Donate ! */,
                                         ),
                                         options: FFButtonOptions(
                                           width: 157.0,
@@ -217,144 +217,163 @@ class _LoginWidgetState extends State<LoginWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  68.0, 0.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: 630.0,
-                                        height: 130.0,
-                                        decoration: BoxDecoration(),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '3owcr3t1' /* Create tickets with QR code . */,
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    68.0, 0.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            width: 630.0,
+                                            decoration: BoxDecoration(),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '3owcr3t1' /* Your Event, Your Ticket, Insta... */,
+                                              ),
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: Color(0xFF00517F),
+                                                    fontSize: 54.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w800,
+                                                    useGoogleFonts: GoogleFonts
+                                                            .asMap()
+                                                        .containsKey(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily),
+                                                  ),
+                                            ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            width: 625.0,
+                                            decoration: BoxDecoration(),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 15.0, 0.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'tbp470z9' /* Create, Share, and Scan – All ... */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: Colors.white,
+                                                          fontSize: 30.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 14.0, 0.0, 0.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          final user = await authManager
+                                              .signInWithGoogle(context);
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          context.goNamedAuth(
+                                              'Home', context.mounted);
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'ye9mkdqf' /* Sign in with Google Account */,
+                                        ),
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.gofore,
+                                          size: 15.0,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 50.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFF23A8FF),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
                                               .override(
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize: 50.0,
+                                                        .titleSmallFamily,
+                                                color: Colors.white,
+                                                fontSize: 18.0,
                                                 letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.w600,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyMediumFamily),
+                                                            .titleSmallFamily),
                                               ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: 625.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 11.0, 0.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'tbp470z9' /* Your Free, Seamless E-Ticketin... */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 30.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w300,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 44.0, 0.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        final user = await authManager
-                                            .signInWithGoogle(context);
-                                        if (user == null) {
-                                          return;
-                                        }
-
-                                        context.goNamedAuth(
-                                            'Home', context.mounted);
-                                      },
-                                      text: FFLocalizations.of(context).getText(
-                                        'ye9mkdqf' /* Sign in with Google Account */,
-                                      ),
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.gofore,
-                                        size: 15.0,
-                                      ),
-                                      options: FFButtonOptions(
-                                        height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFF23A8FF),
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily,
-                                              color: Colors.white,
-                                              fontSize: 18.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
-                                            ),
-                                        elevation: 2.0,
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                        hoverColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        hoverBorderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
-                                        hoverTextColor:
-                                            FlutterFlowTheme.of(context)
+                                          elevation: 2.0,
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                          hoverColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          hoverBorderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
                                                 .primary,
+                                          ),
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             Padding(
@@ -362,13 +381,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   80.0, 0.0, 0.0, 0.0),
                               child: Stack(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/HEIMG.png',
-                                      width: 548.0,
-                                      height: 537.0,
-                                      fit: BoxFit.cover,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 20.0, 0.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.asset(
+                                        'assets/images/HEIMG.png',
+                                        width: 548.0,
+                                        height: 537.0,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                   Align(

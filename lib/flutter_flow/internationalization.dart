@@ -163,17 +163,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     '6aekhg5v': {
-      'en': 'Sign Up',
+      'en': 'Donate !',
       'id': '',
       'ms': '',
     },
     '3owcr3t1': {
-      'en': 'Create tickets with QR code .',
+      'en': 'Your Event, Your Ticket, Instantly QR-Ready!',
       'id': '',
       'ms': '',
     },
     'tbp470z9': {
-      'en': 'Your Free, Seamless E-Ticketing\nSolution for Events & Parties',
+      'en': 'Create, Share, and Scan – All in One Place!',
       'id': '',
       'ms': '',
     },
