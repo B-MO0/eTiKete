@@ -398,7 +398,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fyxsf6vn': {
       'en':
-          'Please complete your profile and provide consent to begin using the app.',
+          'Please complete your profile and provide consent to begin using eTiKete.',
       'id': 'Pengaturan akun',
       'ms': 'Tetapan Akaun',
     },
@@ -449,7 +449,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '947xyt76': {
       'en':
-          'Welcome to eTiKete. By using this app, you agree to grant permissions for specific Google APIs, including Drive, Apps Script, Slides, and Sheets, to enable seamless functionality. These permissions allow us to create, edit, and modify files within a designated folder in your Google Drive, which the app will establish upon setup. Rest assured, we will only access and manage files within this folder; no data outside this folder will be accessible or modified by us.\n\nTo proceed, please review and accept these terms by checking the box below and clicking the \"Consent\" button to authorize permissions. Enjoy your experience with our etikete!',
+          'Welcome to eTiKete. By using this app, you agree to grant permissions for specific Google APIs, including Drive, Apps Script, Slides, and Sheets, to enable seamless functionality. These permissions allow us to create, edit, and modify files within a designated folder in your Google Drive, which the app will establish upon setup. Rest assured, we will only access and manage files within this folder; no data outside this folder will be accessible or modified by us.\n\nTo proceed, please review and accept these terms by checking the box below and clicking the \"Consent\" button to authorize permissions. Enjoy your experience with etikete!',
       'id': '',
       'ms': '',
     },
@@ -457,6 +457,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'I agree to the terms of service .',
       'id': '',
       'ms': '',
+    },
+    'dsptby19': {
+      'en': 'Grant all permissions ',
+      'id': 'Keluar',
+      'ms': 'Log keluar',
     },
     'gg4g5xcv': {
       'en': 'Field is required',
@@ -477,11 +482,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
-    },
-    'abqf147c': {
-      'en': 'Grant all permissions ',
-      'id': 'Keluar',
-      'ms': 'Log keluar',
     },
     'o3dp9tss': {
       'en': '__',

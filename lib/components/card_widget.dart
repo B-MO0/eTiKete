@@ -108,7 +108,7 @@ class _CardWidgetState extends State<CardWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            flex: 3,
+                            flex: 4,
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   4.0, 0.0, 0.0, 0.0),
@@ -126,7 +126,7 @@ class _CardWidgetState extends State<CardWidget> {
                                           .titleMediumFamily,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      fontSize: 50.0,
+                                      fontSize: 60.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
@@ -138,92 +138,99 @@ class _CardWidgetState extends State<CardWidget> {
                             ),
                           ),
                           Expanded(
-                            child: StreamBuilder<List<AppinfoRecord>>(
-                              stream: queryAppinfoRecord(
-                                queryBuilder: (appinfoRecord) =>
-                                    appinfoRecord.where(
-                                  'user',
-                                  isEqualTo: currentUserReference,
+                            flex: 1,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 4.0, 0.0),
+                              child: StreamBuilder<List<AppinfoRecord>>(
+                                stream: queryAppinfoRecord(
+                                  queryBuilder: (appinfoRecord) =>
+                                      appinfoRecord.where(
+                                    'user',
+                                    isEqualTo: currentUserReference,
+                                  ),
+                                  singleRecord: true,
                                 ),
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
                                       ),
+                                    );
+                                  }
+                                  List<AppinfoRecord> buttonAppinfoRecordList =
+                                      snapshot.data!;
+                                  // Return an empty Container when the item does not exist.
+                                  if (snapshot.data!.isEmpty) {
+                                    return Container();
+                                  }
+                                  final buttonAppinfoRecord =
+                                      buttonAppinfoRecordList.isNotEmpty
+                                          ? buttonAppinfoRecordList.first
+                                          : null;
+
+                                  return FFButtonWidget(
+                                    onPressed: () async {
+                                      await DeleteFileFromDriveCall.call(
+                                        fileId: widget!.parameter2,
+                                        accessToken: FFAppState().AccessToken,
+                                      );
+
+                                      await widget!.parameter3!.delete();
+
+                                      await buttonAppinfoRecord!.reference
+                                          .update({
+                                        ...mapToFirestore(
+                                          {
+                                            'totalevents':
+                                                FieldValue.increment(-(1)),
+                                          },
+                                        ),
+                                      });
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '8g6ovalp' /* Delete */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 28.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 6.0, 10.0, 6.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFFFF0C1D),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: Colors.white,
+                                            fontSize: 10.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                      elevation: 0.0,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      hoverElevation: 2.0,
                                     ),
                                   );
-                                }
-                                List<AppinfoRecord> buttonAppinfoRecordList =
-                                    snapshot.data!;
-                                // Return an empty Container when the item does not exist.
-                                if (snapshot.data!.isEmpty) {
-                                  return Container();
-                                }
-                                final buttonAppinfoRecord =
-                                    buttonAppinfoRecordList.isNotEmpty
-                                        ? buttonAppinfoRecordList.first
-                                        : null;
-
-                                return FFButtonWidget(
-                                  onPressed: () async {
-                                    await DeleteFileFromDriveCall.call(
-                                      fileId: widget!.parameter2,
-                                      accessToken: FFAppState().AccessToken,
-                                    );
-
-                                    await widget!.parameter3!.delete();
-
-                                    await buttonAppinfoRecord!.reference
-                                        .update({
-                                      ...mapToFirestore(
-                                        {
-                                          'totalevents':
-                                              FieldValue.increment(-(1)),
-                                        },
-                                      ),
-                                    });
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    '8g6ovalp' /* Delete */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    height: 28.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 6.0, 10.0, 6.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFFFF0C1D),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
-                                          color: Colors.white,
-                                          fontSize: 10.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    hoverElevation: 2.0,
-                                  ),
-                                );
-                              },
+                                },
+                              ),
                             ),
                           ),
                         ],
@@ -241,25 +248,6 @@ class _CardWidgetState extends State<CardWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   fontSize: 15.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
-                                ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        widget!.parameter5!,
-                        style:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleMediumFamily,
-                                  fontSize: 10.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)

@@ -1075,8 +1075,8 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                         : null;
 
                                                                     return FFButtonWidget(
-                                                                      onPressed: ((_model.firstNameTextController.text == null || _model.firstNameTextController.text == '') &&
-                                                                              (_model.lastNameTextController.text == null || _model.lastNameTextController.text == '') &&
+                                                                      onPressed: ((_model.firstNameTextController.text == null || _model.firstNameTextController.text == '') ||
+                                                                              (_model.lastNameTextController.text == null || _model.lastNameTextController.text == '') ||
                                                                               (_model.emailTextController.text == null || _model.emailTextController.text == ''))
                                                                           ? null
                                                                           : () async {
