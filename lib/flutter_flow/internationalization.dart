@@ -705,26 +705,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': 'gaya Harry',
     },
   },
-  // editProfilePhoto
+  // DeleteAccount
   {
     '6bnefz1c': {
-      'en': 'Change Photo',
+      'en': 'Delete Account',
       'id': '',
       'ms': '',
     },
     'yaxe7q8v': {
-      'en':
-          'Upload a new photo below in order to change your avatar seen by others.',
+      'en': 'Are you sure you want to delete your account ?',
       'id': '',
       'ms': '',
     },
     're4x0sz7': {
-      'en': 'Upload Image',
+      'en': 'Cancel',
       'id': '',
       'ms': '',
     },
     'sr54fsk6': {
-      'en': 'Save Changes',
+      'en': 'Delete',
       'id': '',
       'ms': '',
     },
