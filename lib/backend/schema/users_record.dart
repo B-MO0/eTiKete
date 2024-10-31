@@ -56,11 +56,6 @@ class UsersRecord extends FirestoreRecord {
   String get birthdate => _birthdate ?? '';
   bool hasBirthdate() => _birthdate != null;
 
-  // "gender" field.
-  String? _gender;
-  String get gender => _gender ?? '';
-  bool hasGender() => _gender != null;
-
   // "profession" field.
   String? _profession;
   String get profession => _profession ?? '';
@@ -75,7 +70,6 @@ class UsersRecord extends FirestoreRecord {
     _phoneNumber = snapshotData['phone_number'] as String?;
     _address = snapshotData['address'] as String?;
     _birthdate = snapshotData['birthdate'] as String?;
-    _gender = snapshotData['gender'] as String?;
     _profession = snapshotData['profession'] as String?;
   }
 
@@ -121,7 +115,6 @@ Map<String, dynamic> createUsersRecordData({
   String? phoneNumber,
   String? address,
   String? birthdate,
-  String? gender,
   String? profession,
 }) {
   final firestoreData = mapToFirestore(
@@ -134,7 +127,6 @@ Map<String, dynamic> createUsersRecordData({
       'phone_number': phoneNumber,
       'address': address,
       'birthdate': birthdate,
-      'gender': gender,
       'profession': profession,
     }.withoutNulls,
   );
@@ -155,7 +147,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.address == e2?.address &&
         e1?.birthdate == e2?.birthdate &&
-        e1?.gender == e2?.gender &&
         e1?.profession == e2?.profession;
   }
 
@@ -169,7 +160,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.phoneNumber,
         e?.address,
         e?.birthdate,
-        e?.gender,
         e?.profession
       ]);
 

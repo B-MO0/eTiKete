@@ -527,77 +527,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     'okpco0lx': {
-      'en': 'Please enter your Birth date ...',
-      'id': '',
-      'ms': '',
-    },
-    'awdrnwmm': {
       'en': 'dd/mm/year',
-      'id': '',
-      'ms': '',
-    },
-    'h9o4dvt0': {
-      'en': 'Profession :',
-      'id': '',
-      'ms': '',
-    },
-    'jf5p6uig': {
-      'en': 'Student',
-      'id': '',
-      'ms': '',
-    },
-    'p7xsqv0u': {
-      'en': 'Teacher',
-      'id': '',
-      'ms': '',
-    },
-    'kjhzpwq2': {
-      'en': 'Business owner',
-      'id': '',
-      'ms': '',
-    },
-    'nce1e22v': {
-      'en': 'Change Profession',
-      'id': '',
-      'ms': '',
-    },
-    'z8bifoqq': {
-      'en': 'Search...',
-      'id': '',
-      'ms': '',
-    },
-    'faqovrd1': {
-      'en': 'Gender :',
-      'id': '',
-      'ms': '',
-    },
-    'x6cnu3gr': {
-      'en': 'Male',
-      'id': '',
-      'ms': '',
-    },
-    'euq6ohhz': {
-      'en': 'Female',
-      'id': '',
-      'ms': '',
-    },
-    'nncvq52y': {
-      'en': 'Other',
-      'id': '',
-      'ms': '',
-    },
-    'u41k5wre': {
-      'en': 'Change Gender',
-      'id': '',
-      'ms': '',
-    },
-    '6c5k4lov': {
-      'en': 'Search...',
       'id': '',
       'ms': '',
     },
     'c318e2xs': {
       'en': 'Push Profile Changes',
+      'id': '',
+      'ms': '',
+    },
+    '4v40f6a1': {
+      'en': 'Log Out',
+      'id': '',
+      'ms': '',
+    },
+    '82j775d2': {
+      'en': 'Delete Account',
       'id': '',
       'ms': '',
     },

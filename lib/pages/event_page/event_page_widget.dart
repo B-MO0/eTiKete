@@ -1188,6 +1188,14 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                                     },
                                                                                   ),
                                                                                 });
+                                                                                await DeleteFileFromDriveCall.call(
+                                                                                  accessToken: FFAppState().AccessToken,
+                                                                                  fileId: getJsonField(
+                                                                                    (_model.slidedata?.jsonBody ?? ''),
+                                                                                    r'''$.id''',
+                                                                                  ).toString(),
+                                                                                );
+
                                                                                 safeSetState(() {
                                                                                   _model.firstNameTextController?.clear();
                                                                                   _model.lastNameTextController?.clear();
@@ -1376,7 +1384,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          5.0, 2.0, 5.0, 2.0),
+                                                          8.0, 2.0, 8.0, 2.0),
                                                   child: Builder(
                                                     builder: (context) {
                                                       final sigleticket =
