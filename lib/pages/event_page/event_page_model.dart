@@ -35,7 +35,7 @@ class EventPageModel extends FlutterFlowModel<EventPageWidget> {
   String? _firstNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'gg4g5xcv' /* Field is required */,
+        'mo1t3ldy' /* Field is required */,
       );
     }
 

@@ -236,19 +236,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     '8vot9bzj': {
-      'en': 'Events',
+      'en': ' Online Events',
       'id': 'Kontrak Baru',
       'ms': 'Kontrak Baru',
     },
     'saxskj92': {
-      'en': 'Tickets',
+      'en': 'Total Tickets Created',
       'id': 'Kontrak Kedaluwarsa',
       'ms': 'Kontrak Tamat',
-    },
-    '2wlrr5lg': {
-      'en': '0',
-      'id': '4300',
-      'ms': '4300',
     },
     'umh53lbz': {
       'en': 'Create new Event :',
@@ -343,12 +338,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    'gg4g5xcv': {
+    'ltun036t': {
       'en': 'Field is required',
       'id': '',
       'ms': '',
     },
-    '6ra05afg': {
+    'whsrgh3r': {
       'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
@@ -403,7 +398,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fyxsf6vn': {
       'en':
-          'Please complete your profile and provide consent to begin using the app.',
+          'Please complete your profile and provide consent to begin using eTiKete.',
       'id': 'Pengaturan akun',
       'ms': 'Tetapan Akaun',
     },
@@ -454,19 +449,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '947xyt76': {
       'en':
-          'Welcome to eTiKete. By using this app, you agree to grant permissions for specific Google APIs, including Drive, Apps Script, Slides, and Sheets, to enable seamless functionality. These permissions allow us to create, edit, and modify files within a designated folder in your Google Drive, which the app will establish upon setup. Rest assured, we will only access and manage files within this folder; no data outside this folder will be accessible or modified by us.\n\nTo proceed, please review and accept these terms by checking the box below and clicking the \"Consent\" button to authorize permissions. Enjoy your experience with our etikete!',
+          'Welcome to eTiKete. By using this app, you agree to grant permissions for specific Google APIs, including Drive, Apps Script, Slides, and Sheets, to enable seamless functionality. These permissions allow us to create, edit, and modify files within a designated folder in your Google Drive, which the app will establish upon setup. Rest assured, we will only access and manage files within this folder; no data outside this folder will be accessible or modified by us.\n\nTo proceed, please review and accept these terms by checking the box below and clicking the \"Consent\" button to authorize permissions. Enjoy your experience with etikete!',
       'id': '',
       'ms': '',
     },
-    '4liiy493': {
+    '2aw8y7we': {
       'en': 'I agree to the terms of service .',
       'id': '',
       'ms': '',
     },
-    'abqf147c': {
+    'dsptby19': {
       'en': 'Grant all permissions ',
       'id': 'Keluar',
       'ms': 'Log keluar',
+    },
+    'gg4g5xcv': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    '6ra05afg': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
+    },
+    'mo1t3ldy': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    'l7nlv9nc': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
     },
     'o3dp9tss': {
       'en': '__',
@@ -485,6 +500,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile informations',
       'id': 'Pengaturan akun',
       'ms': 'Tetapan Akaun',
+    },
+    'b4wwn2hn': {
+      'en': 'Phone number :',
+      'id': '',
+      'ms': '',
+    },
+    '5bc9h9xt': {
+      'en': 'Please enter your new phone number ...',
+      'id': '',
+      'ms': '',
+    },
+    '25wplaii': {
+      'en': 'Address :',
+      'id': '',
+      'ms': '',
+    },
+    'affs6cpb': {
+      'en': 'Please enter your new address ...',
+      'id': '',
+      'ms': '',
+    },
+    'fxm8bf5d': {
+      'en': 'Birth date :',
+      'id': '',
+      'ms': '',
+    },
+    'okpco0lx': {
+      'en': 'dd/mm/year',
+      'id': '',
+      'ms': '',
+    },
+    'c318e2xs': {
+      'en': 'Push Profile Changes',
+      'id': '',
+      'ms': '',
+    },
+    '4v40f6a1': {
+      'en': 'Log Out',
+      'id': '',
+      'ms': '',
+    },
+    '82j775d2': {
+      'en': 'Delete Account',
+      'id': '',
+      'ms': '',
     },
     '4bpetcjv': {
       'en': '__',

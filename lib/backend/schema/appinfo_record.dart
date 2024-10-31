@@ -36,11 +36,17 @@ class AppinfoRecord extends FirestoreRecord {
   int get totalevents => _totalevents ?? 0;
   bool hasTotalevents() => _totalevents != null;
 
+  // "totaltickets" field.
+  int? _totaltickets;
+  int get totaltickets => _totaltickets ?? 0;
+  bool hasTotaltickets() => _totaltickets != null;
+
   void _initializeFields() {
     _refreshToken = snapshotData['refresh_token'] as String?;
     _drfId = snapshotData['drf_id'] as String?;
     _user = snapshotData['user'] as DocumentReference?;
     _totalevents = castToType<int>(snapshotData['totalevents']);
+    _totaltickets = castToType<int>(snapshotData['totaltickets']);
   }
 
   static CollectionReference get collection =>
@@ -82,6 +88,7 @@ Map<String, dynamic> createAppinfoRecordData({
   String? drfId,
   DocumentReference? user,
   int? totalevents,
+  int? totaltickets,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -89,6 +96,7 @@ Map<String, dynamic> createAppinfoRecordData({
       'drf_id': drfId,
       'user': user,
       'totalevents': totalevents,
+      'totaltickets': totaltickets,
     }.withoutNulls,
   );
 
@@ -103,12 +111,13 @@ class AppinfoRecordDocumentEquality implements Equality<AppinfoRecord> {
     return e1?.refreshToken == e2?.refreshToken &&
         e1?.drfId == e2?.drfId &&
         e1?.user == e2?.user &&
-        e1?.totalevents == e2?.totalevents;
+        e1?.totalevents == e2?.totalevents &&
+        e1?.totaltickets == e2?.totaltickets;
   }
 
   @override
-  int hash(AppinfoRecord? e) => const ListEquality()
-      .hash([e?.refreshToken, e?.drfId, e?.user, e?.totalevents]);
+  int hash(AppinfoRecord? e) => const ListEquality().hash(
+      [e?.refreshToken, e?.drfId, e?.user, e?.totalevents, e?.totaltickets]);
 
   @override
   bool isValidKey(Object? o) => o is AppinfoRecord;

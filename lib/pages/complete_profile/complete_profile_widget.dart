@@ -4,7 +4,6 @@ import '/backend/backend.dart';
 import '/components/command_palette/command_palette_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -15,8 +14,10 @@ import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -109,11 +110,11 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
       }
     });
 
-    _model.phonenumberTextController1 ??= TextEditingController();
-    _model.phonenumberFocusNode1 ??= FocusNode();
+    _model.phonenumberTextController ??= TextEditingController();
+    _model.phonenumberFocusNode ??= FocusNode();
 
-    _model.phonenumberTextController2 ??= TextEditingController();
-    _model.phonenumberFocusNode2 ??= FocusNode();
+    _model.addressTextController ??= TextEditingController();
+    _model.addressFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'textOnPageLoadAnimation': AnimationInfo(
@@ -470,7 +471,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                       20.0, 0.0, 20.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
-                                    height: 550.0,
+                                    height: 634.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -513,10 +514,18 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                                                 0.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .phonenumberTextController1,
+                                                          .phonenumberTextController,
                                                       focusNode: _model
-                                                          .phonenumberFocusNode1,
-                                                      autofocus: true,
+                                                          .phonenumberFocusNode,
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        '_model.phonenumberTextController',
+                                                        Duration(
+                                                            milliseconds: 100),
+                                                        () =>
+                                                            safeSetState(() {}),
+                                                      ),
+                                                      autofocus: false,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -648,9 +657,16 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                                                             .bodyMediumFamily),
                                                               ),
                                                       maxLength: 15,
+                                                      keyboardType:
+                                                          TextInputType.phone,
                                                       validator: _model
-                                                          .phonenumberTextController1Validator
+                                                          .phonenumberTextControllerValidator
                                                           .asValidator(context),
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .allow(
+                                                                RegExp('[0-9]'))
+                                                      ],
                                                     ),
                                                   ),
                                                   Padding(
@@ -660,10 +676,18 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                                                 0.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .phonenumberTextController2,
+                                                          .addressTextController,
                                                       focusNode: _model
-                                                          .phonenumberFocusNode2,
-                                                      autofocus: true,
+                                                          .addressFocusNode,
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        '_model.addressTextController',
+                                                        Duration(
+                                                            milliseconds: 100),
+                                                        () =>
+                                                            safeSetState(() {}),
+                                                      ),
+                                                      autofocus: false,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -796,7 +820,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                                               ),
                                                       maxLength: 70,
                                                       validator: _model
-                                                          .phonenumberTextController2Validator
+                                                          .addressTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -935,42 +959,69 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 16.0,
-                                                                0.0, 0.0),
-                                                    child:
-                                                        FlutterFlowCheckboxGroup(
-                                                      options: [
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '4liiy493' /* I agree to the terms of servic... */,
-                                                        )
-                                                      ],
-                                                      onChanged: (val) =>
-                                                          safeSetState(() =>
-                                                              _model.checkboxGroupValues =
-                                                                  val),
-                                                      controller: _model
-                                                              .checkboxGroupValueController ??=
-                                                          FormFieldController<
-                                                              List<String>>(
-                                                        List.from([''] ?? []),
-                                                      ),
-                                                      activeColor:
-                                                          FlutterFlowTheme.of(
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 12.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Theme(
+                                                          data: ThemeData(
+                                                            checkboxTheme:
+                                                                CheckboxThemeData(
+                                                              visualDensity:
+                                                                  VisualDensity
+                                                                      .compact,
+                                                              materialTapTargetSize:
+                                                                  MaterialTapTargetSize
+                                                                      .shrinkWrap,
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4.0),
+                                                              ),
+                                                            ),
+                                                            unselectedWidgetColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                          ),
+                                                          child: Checkbox(
+                                                            value: _model
+                                                                    .checkboxValue ??=
+                                                                false,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.checkboxValue =
+                                                                      newValue!);
+                                                            },
+                                                            side: BorderSide(
+                                                              width: 2,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                            ),
+                                                            activeColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            checkColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          FFLocalizations.of(
                                                                   context)
-                                                              .primary,
-                                                      checkColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      checkboxBorderColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                              .getText(
+                                                            '2aw8y7we' /* I agree to the terms of servic... */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
@@ -984,19 +1035,158 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      itemPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  15.0),
-                                                      checkboxBorderRadius:
-                                                          BorderRadius.circular(
-                                                              4.0),
-                                                      initialized: _model
-                                                              .checkboxGroupValues !=
-                                                          null,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 20.0,
+                                                                0.0, 20.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        80.0,
+                                                                        0.0,
+                                                                        80.0,
+                                                                        0.0),
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed: ((_model
+                                                                                  .phonenumberTextController
+                                                                                  .text ==
+                                                                              null ||
+                                                                          _model
+                                                                                  .phonenumberTextController
+                                                                                  .text ==
+                                                                              '') ||
+                                                                      (_model.addressTextController.text ==
+                                                                              null ||
+                                                                          _model.addressTextController.text ==
+                                                                              '') ||
+                                                                      (_model.dropDownValue ==
+                                                                              null ||
+                                                                          _model.dropDownValue ==
+                                                                              '') ||
+                                                                      (_model.checkboxValue ==
+                                                                          false))
+                                                                  ? null
+                                                                  : () async {
+                                                                      await currentUserReference!
+                                                                          .update(
+                                                                              createUsersRecordData(
+                                                                        phoneNumber: _model
+                                                                            .phonenumberTextController
+                                                                            .text,
+                                                                        address: _model
+                                                                            .addressTextController
+                                                                            .text,
+                                                                        profession:
+                                                                            _model.dropDownValue,
+                                                                      ));
+                                                                      await launchURL(
+                                                                          'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive%20https%3A//www.googleapis.com/auth/presentations%20https%3A//www.googleapis.com/auth/script.deployments&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=https://etikete.flutterflow.app&client_id=364818987476-v8lv59fnr7qjo4s55e0ngr86idmigqdi.apps.googleusercontent.com');
+                                                                    },
+                                                              text: FFLocalizations
+                                                                      .of(context)
+                                                                  .getText(
+                                                                'dsptby19' /* Grant all permissions  */,
+                                                              ),
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                width: 90.0,
+                                                                height: 60.0,
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                iconPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                textStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
+                                                                elevation: 2.0,
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  width: 4.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            40.0),
+                                                                disabledColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                disabledTextColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                hoverColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                hoverBorderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  width: 4.0,
+                                                                ),
+                                                                hoverTextColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                hoverElevation:
+                                                                    3.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 ],
@@ -1007,74 +1197,6 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                       ],
                                     ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 0.0, 20.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            80.0, 0.0, 80.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            await launchURL(
-                                                'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive%20https%3A//www.googleapis.com/auth/presentations%20https%3A//www.googleapis.com/auth/script.deployments&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=https://etikete.flutterflow.app&client_id=364818987476-v8lv59fnr7qjo4s55e0ngr86idmigqdi.apps.googleusercontent.com');
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'abqf147c' /* Grant all permissions  */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            width: 90.0,
-                                            height: 60.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            textStyle: FlutterFlowTheme.of(
-                                                    context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  fontSize: 18.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                            elevation: 2.0,
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 4.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(40.0),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ),
                             ],

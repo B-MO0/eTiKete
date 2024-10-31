@@ -1021,212 +1021,249 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                             8.0,
                                                                             0.0,
                                                                             8.0),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed: ((_model.firstNameTextController.text == null ||
-                                                                              _model.firstNameTextController.text ==
-                                                                                  '') &&
-                                                                          (/* NOT RECOMMENDED */ _model.lastNameTextController.text ==
-                                                                              'true') &&
-                                                                          (/* NOT RECOMMENDED */ _model.emailTextController.text ==
-                                                                              'true'))
-                                                                      ? null
-                                                                      : () async {
-                                                                          if (_model.formKey.currentState == null ||
-                                                                              !_model.formKey.currentState!.validate()) {
-                                                                            return;
-                                                                          }
-                                                                          _model.tuid =
-                                                                              random_data.randomString(
-                                                                            20,
-                                                                            30,
-                                                                            true,
-                                                                            false,
-                                                                            true,
-                                                                          );
-                                                                          safeSetState(
-                                                                              () {});
-                                                                          _model.sheetdata =
-                                                                              await AddTicketToSheetCall.call(
-                                                                            accessToken:
-                                                                                FFAppState().AccessToken,
-                                                                            fName:
-                                                                                _model.firstNameTextController.text,
-                                                                            lName:
-                                                                                _model.lastNameTextController.text,
-                                                                            email:
-                                                                                _model.emailTextController.text,
-                                                                            spreadsheetId:
-                                                                                eventPageEventsRecord.uid,
-                                                                            uid:
-                                                                                _model.tuid,
-                                                                          );
-
-                                                                          if ((_model.sheetdata?.succeeded ??
-                                                                              true)) {
-                                                                            await actions.getAppFolderID(
-                                                                              context,
-                                                                              'dummy2',
-                                                                            );
-                                                                            _model.slidedata =
-                                                                                await CopyEventSheetNdTicketSlideCall.call(
-                                                                              accessToken: FFAppState().AccessToken,
-                                                                              fileId: FFAppState().ticketdesign,
-                                                                              name: _model.emailTextController.text,
-                                                                              parents: FFAppState().drfId,
-                                                                            );
-
-                                                                            _model.qrholder =
-                                                                                await GetTicketSlideDataCall.call(
-                                                                              accessToken: FFAppState().AccessToken,
-                                                                              presentationId: getJsonField(
-                                                                                (_model.slidedata?.jsonBody ?? ''),
-                                                                                r'''$.id''',
-                                                                              ).toString(),
-                                                                            );
-
-                                                                            await UpdateSlideCall.call(
-                                                                              accessToken: FFAppState().AccessToken,
-                                                                              firstname: _model.firstNameTextController.text,
-                                                                              lastname: _model.lastNameTextController.text,
-                                                                              email: _model.emailTextController.text,
-                                                                              presentationId: getJsonField(
-                                                                                (_model.slidedata?.jsonBody ?? ''),
-                                                                                r'''$.id''',
-                                                                              ).toString(),
-                                                                              qrcode: 'https://quickchart.io/qr?text=${_model.tuid}',
-                                                                              rectangleImageId: getJsonField(
-                                                                                (_model.qrholder?.jsonBody ?? ''),
-                                                                                r'''$.slides[*].pageElements[?(@.description == '{{qrcode}}')].objectId''',
-                                                                              ).toString(),
-                                                                            );
-
-                                                                            _model.ticketimg =
-                                                                                await ExportFromDriveCall.call(
-                                                                              accessToken: FFAppState().AccessToken,
-                                                                              fileId: getJsonField(
-                                                                                (_model.slidedata?.jsonBody ?? ''),
-                                                                                r'''$.id''',
-                                                                              ).toString(),
-                                                                            );
-
-                                                                            _model.ticketfileid =
-                                                                                await SaveTicketCall.call(
-                                                                              name: _model.tuid,
-                                                                              folderid: FFAppState().drfId,
-                                                                              imageurl: getJsonField(
-                                                                                (_model.ticketimg?.jsonBody ?? ''),
-                                                                                r'''$.contentUrl''',
-                                                                              ).toString(),
-                                                                            );
-
-                                                                            await TicketsRecord.createDoc(widget!.receiveEvent!).set({
-                                                                              ...createTicketsRecordData(
-                                                                                firstName: _model.firstNameTextController.text,
-                                                                                lastName: _model.lastNameTextController.text,
-                                                                                email: _model.emailTextController.text,
-                                                                                uid: _model.tuid,
-                                                                                eref: widget!.receiveEvent,
-                                                                                qrlink: 'https://quickchart.io/qr?text=${_model.tuid}',
-                                                                                range: getJsonField(
-                                                                                  (_model.sheetdata?.jsonBody ?? ''),
-                                                                                  r'''$.updates.updatedRange''',
-                                                                                ).toString(),
-                                                                                tkurl: 'https://drive.google.com/file/d/${getJsonField(
-                                                                                  (_model.ticketfileid?.jsonBody ?? ''),
-                                                                                  r'''$.fileId''',
-                                                                                ).toString()}/preview',
-                                                                                sid: getJsonField(
-                                                                                  (_model.ticketfileid?.jsonBody ?? ''),
-                                                                                  r'''$.fileId''',
-                                                                                ).toString(),
-                                                                              ),
-                                                                              ...mapToFirestore(
-                                                                                {
-                                                                                  'created_time': FieldValue.serverTimestamp(),
-                                                                                },
-                                                                              ),
-                                                                            });
-                                                                            safeSetState(() {
-                                                                              _model.firstNameTextController?.clear();
-                                                                              _model.lastNameTextController?.clear();
-                                                                              _model.emailTextController?.clear();
-                                                                            });
-                                                                          } else {
-                                                                            ScaffoldMessenger.of(context).clearSnackBars();
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  'ticket creation failed !! Please try again',
-                                                                                  style: TextStyle(
-                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                    fontWeight: FontWeight.w600,
-                                                                                  ),
-                                                                                ),
-                                                                                duration: Duration(milliseconds: 3000),
-                                                                                backgroundColor: FlutterFlowTheme.of(context).alternate,
-                                                                              ),
-                                                                            );
-                                                                          }
-
-                                                                          safeSetState(
-                                                                              () {});
-                                                                        },
-                                                                  text: FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    '0zg8qe4w' /* Add ticket */,
+                                                                child: StreamBuilder<
+                                                                    List<
+                                                                        AppinfoRecord>>(
+                                                                  stream:
+                                                                      queryAppinfoRecord(
+                                                                    queryBuilder:
+                                                                        (appinfoRecord) =>
+                                                                            appinfoRecord.where(
+                                                                      'user',
+                                                                      isEqualTo:
+                                                                          currentUserReference,
+                                                                    ),
+                                                                    singleRecord:
+                                                                        true,
                                                                   ),
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryBackground,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                          color:
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    // Customize what your widget looks like when it's loading.
+                                                                    if (!snapshot
+                                                                        .hasData) {
+                                                                      return Center(
+                                                                        child:
+                                                                            SizedBox(
+                                                                          width:
+                                                                              50.0,
+                                                                          height:
+                                                                              50.0,
+                                                                          child:
+                                                                              CircularProgressIndicator(
+                                                                            valueColor:
+                                                                                AlwaysStoppedAnimation<Color>(
                                                                               FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              18.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            ),
+                                                                          ),
                                                                         ),
-                                                                    elevation:
-                                                                        2.0,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    disabledColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                    disabledTextColor:
-                                                                        FlutterFlowTheme.of(context)
+                                                                      );
+                                                                    }
+                                                                    List<AppinfoRecord>
+                                                                        buttonAppinfoRecordList =
+                                                                        snapshot
+                                                                            .data!;
+                                                                    // Return an empty Container when the item does not exist.
+                                                                    if (snapshot
+                                                                        .data!
+                                                                        .isEmpty) {
+                                                                      return Container();
+                                                                    }
+                                                                    final buttonAppinfoRecord = buttonAppinfoRecordList
+                                                                            .isNotEmpty
+                                                                        ? buttonAppinfoRecordList
+                                                                            .first
+                                                                        : null;
+
+                                                                    return FFButtonWidget(
+                                                                      onPressed: ((_model.firstNameTextController.text == null || _model.firstNameTextController.text == '') ||
+                                                                              (_model.lastNameTextController.text == null || _model.lastNameTextController.text == '') ||
+                                                                              (_model.emailTextController.text == null || _model.emailTextController.text == ''))
+                                                                          ? null
+                                                                          : () async {
+                                                                              if (_model.formKey.currentState == null || !_model.formKey.currentState!.validate()) {
+                                                                                return;
+                                                                              }
+                                                                              _model.tuid = random_data.randomString(
+                                                                                20,
+                                                                                30,
+                                                                                true,
+                                                                                false,
+                                                                                true,
+                                                                              );
+                                                                              safeSetState(() {});
+                                                                              _model.sheetdata = await AddTicketToSheetCall.call(
+                                                                                accessToken: FFAppState().AccessToken,
+                                                                                fName: _model.firstNameTextController.text,
+                                                                                lName: _model.lastNameTextController.text,
+                                                                                email: _model.emailTextController.text,
+                                                                                spreadsheetId: eventPageEventsRecord.uid,
+                                                                                uid: _model.tuid,
+                                                                              );
+
+                                                                              if ((_model.sheetdata?.succeeded ?? true)) {
+                                                                                await actions.getAppFolderID(
+                                                                                  context,
+                                                                                  'dummy2',
+                                                                                );
+                                                                                _model.slidedata = await CopyEventSheetNdTicketSlideCall.call(
+                                                                                  accessToken: FFAppState().AccessToken,
+                                                                                  fileId: FFAppState().ticketdesign,
+                                                                                  name: _model.emailTextController.text,
+                                                                                  parents: FFAppState().drfId,
+                                                                                );
+
+                                                                                _model.qrholder = await GetTicketSlideDataCall.call(
+                                                                                  accessToken: FFAppState().AccessToken,
+                                                                                  presentationId: getJsonField(
+                                                                                    (_model.slidedata?.jsonBody ?? ''),
+                                                                                    r'''$.id''',
+                                                                                  ).toString(),
+                                                                                );
+
+                                                                                await UpdateSlideCall.call(
+                                                                                  accessToken: FFAppState().AccessToken,
+                                                                                  firstname: _model.firstNameTextController.text,
+                                                                                  lastname: _model.lastNameTextController.text,
+                                                                                  email: _model.emailTextController.text,
+                                                                                  presentationId: getJsonField(
+                                                                                    (_model.slidedata?.jsonBody ?? ''),
+                                                                                    r'''$.id''',
+                                                                                  ).toString(),
+                                                                                  qrcode: 'https://quickchart.io/qr?text=${_model.tuid}',
+                                                                                  rectangleImageId: getJsonField(
+                                                                                    (_model.qrholder?.jsonBody ?? ''),
+                                                                                    r'''$.slides[*].pageElements[?(@.description == '{{qrcode}}')].objectId''',
+                                                                                  ).toString(),
+                                                                                );
+
+                                                                                _model.ticketimg = await ExportFromDriveCall.call(
+                                                                                  accessToken: FFAppState().AccessToken,
+                                                                                  fileId: getJsonField(
+                                                                                    (_model.slidedata?.jsonBody ?? ''),
+                                                                                    r'''$.id''',
+                                                                                  ).toString(),
+                                                                                );
+
+                                                                                _model.ticketfileid = await SaveTicketCall.call(
+                                                                                  name: _model.tuid,
+                                                                                  folderid: FFAppState().drfId,
+                                                                                  imageurl: getJsonField(
+                                                                                    (_model.ticketimg?.jsonBody ?? ''),
+                                                                                    r'''$.contentUrl''',
+                                                                                  ).toString(),
+                                                                                );
+
+                                                                                await TicketsRecord.createDoc(widget!.receiveEvent!).set({
+                                                                                  ...createTicketsRecordData(
+                                                                                    firstName: _model.firstNameTextController.text,
+                                                                                    lastName: _model.lastNameTextController.text,
+                                                                                    email: _model.emailTextController.text,
+                                                                                    uid: _model.tuid,
+                                                                                    eref: widget!.receiveEvent,
+                                                                                    qrlink: 'https://quickchart.io/qr?text=${_model.tuid}',
+                                                                                    range: getJsonField(
+                                                                                      (_model.sheetdata?.jsonBody ?? ''),
+                                                                                      r'''$.updates.updatedRange''',
+                                                                                    ).toString(),
+                                                                                    tkurl: 'https://drive.google.com/file/d/${getJsonField(
+                                                                                      (_model.ticketfileid?.jsonBody ?? ''),
+                                                                                      r'''$.fileId''',
+                                                                                    ).toString()}/preview',
+                                                                                    sid: getJsonField(
+                                                                                      (_model.ticketfileid?.jsonBody ?? ''),
+                                                                                      r'''$.fileId''',
+                                                                                    ).toString(),
+                                                                                  ),
+                                                                                  ...mapToFirestore(
+                                                                                    {
+                                                                                      'created_time': FieldValue.serverTimestamp(),
+                                                                                    },
+                                                                                  ),
+                                                                                });
+
+                                                                                await buttonAppinfoRecord!.reference.update({
+                                                                                  ...mapToFirestore(
+                                                                                    {
+                                                                                      'totaltickets': FieldValue.increment(1),
+                                                                                    },
+                                                                                  ),
+                                                                                });
+                                                                                await DeleteFileFromDriveCall.call(
+                                                                                  accessToken: FFAppState().AccessToken,
+                                                                                  fileId: getJsonField(
+                                                                                    (_model.slidedata?.jsonBody ?? ''),
+                                                                                    r'''$.id''',
+                                                                                  ).toString(),
+                                                                                );
+
+                                                                                safeSetState(() {
+                                                                                  _model.firstNameTextController?.clear();
+                                                                                  _model.lastNameTextController?.clear();
+                                                                                  _model.emailTextController?.clear();
+                                                                                });
+                                                                              } else {
+                                                                                ScaffoldMessenger.of(context).clearSnackBars();
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text(
+                                                                                      'ticket creation failed !! Please try again',
+                                                                                      style: TextStyle(
+                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                      ),
+                                                                                    ),
+                                                                                    duration: Duration(milliseconds: 3000),
+                                                                                    backgroundColor: FlutterFlowTheme.of(context).alternate,
+                                                                                  ),
+                                                                                );
+                                                                              }
+
+                                                                              safeSetState(() {});
+                                                                            },
+                                                                      text: FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        '0zg8qe4w' /* Add ticket */,
+                                                                      ),
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
                                                                             .primaryBackground,
-                                                                    hoverElevation:
-                                                                        4.0,
-                                                                  ),
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              fontSize: 18.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            ),
+                                                                        elevation:
+                                                                            2.0,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                        disabledColor:
+                                                                            FlutterFlowTheme.of(context).secondaryText,
+                                                                        disabledTextColor:
+                                                                            FlutterFlowTheme.of(context).primaryBackground,
+                                                                        hoverElevation:
+                                                                            4.0,
+                                                                      ),
+                                                                    );
+                                                                  },
                                                                 ),
                                                               ),
                                                             ),
@@ -1347,7 +1384,7 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          5.0, 2.0, 5.0, 2.0),
+                                                          8.0, 2.0, 8.0, 2.0),
                                                   child: Builder(
                                                     builder: (context) {
                                                       final sigleticket =
@@ -1416,48 +1453,74 @@ class _EventPageWidgetState extends State<EventPageWidget> {
                                                                               4.0,
                                                                               0.0),
                                                                           child:
-                                                                              FFButtonWidget(
-                                                                            onPressed:
-                                                                                () async {
-                                                                              await DeleteTicketFromSheetCall.call(
-                                                                                accessToken: FFAppState().AccessToken,
-                                                                                range: sigleticketItem.range,
-                                                                                sheetId: eventPageEventsRecord.uid,
-                                                                              );
-
-                                                                              await DeleteFileFromDriveCall.call(
-                                                                                accessToken: FFAppState().AccessToken,
-                                                                                fileId: sigleticketItem.sid,
-                                                                              );
-
-                                                                              await sigleticketItem.reference.delete();
-                                                                            },
-                                                                            text:
-                                                                                FFLocalizations.of(context).getText(
-                                                                              '32c6oale' /* Delete */,
+                                                                              StreamBuilder<List<AppinfoRecord>>(
+                                                                            stream:
+                                                                                queryAppinfoRecord(
+                                                                              queryBuilder: (appinfoRecord) => appinfoRecord.where(
+                                                                                'user',
+                                                                                isEqualTo: currentUserReference,
+                                                                              ),
+                                                                              singleRecord: true,
                                                                             ),
-                                                                            icon:
-                                                                                FaIcon(
-                                                                              FontAwesomeIcons.trashAlt,
-                                                                              size: 15.0,
-                                                                            ),
-                                                                            options:
-                                                                                FFButtonOptions(
-                                                                              height: 40.0,
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                              iconAlignment: IconAlignment.start,
-                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                              color: Color(0xFFFF1F2D),
-                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                    color: Colors.white,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w600,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            builder:
+                                                                                (context, snapshot) {
+                                                                              // Customize what your widget looks like when it's loading.
+                                                                              if (!snapshot.hasData) {
+                                                                                return Center(
+                                                                                  child: SizedBox(
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    child: CircularProgressIndicator(
+                                                                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                        FlutterFlowTheme.of(context).primary,
+                                                                                      ),
+                                                                                    ),
                                                                                   ),
-                                                                              elevation: 0.0,
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                            ),
+                                                                                );
+                                                                              }
+                                                                              List<AppinfoRecord> buttonAppinfoRecordList = snapshot.data!;
+                                                                              final buttonAppinfoRecord = buttonAppinfoRecordList.isNotEmpty ? buttonAppinfoRecordList.first : null;
+
+                                                                              return FFButtonWidget(
+                                                                                onPressed: () async {
+                                                                                  await DeleteTicketFromSheetCall.call(
+                                                                                    accessToken: FFAppState().AccessToken,
+                                                                                    range: sigleticketItem.range,
+                                                                                    sheetId: eventPageEventsRecord.uid,
+                                                                                  );
+
+                                                                                  await DeleteFileFromDriveCall.call(
+                                                                                    accessToken: FFAppState().AccessToken,
+                                                                                    fileId: sigleticketItem.sid,
+                                                                                  );
+
+                                                                                  await sigleticketItem.reference.delete();
+                                                                                },
+                                                                                text: FFLocalizations.of(context).getText(
+                                                                                  '32c6oale' /* Delete */,
+                                                                                ),
+                                                                                icon: FaIcon(
+                                                                                  FontAwesomeIcons.trashAlt,
+                                                                                  size: 15.0,
+                                                                                ),
+                                                                                options: FFButtonOptions(
+                                                                                  height: 40.0,
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                  iconAlignment: IconAlignment.start,
+                                                                                  iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                  color: Color(0xFFFF1F2D),
+                                                                                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                        color: Colors.white,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                      ),
+                                                                                  elevation: 0.0,
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                ),
+                                                                              );
+                                                                            },
                                                                           ),
                                                                         ),
                                                                       ),
