@@ -4,7 +4,6 @@ import '/backend/backend.dart';
 import '/components/command_palette/command_palette_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -18,6 +17,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -34,34 +34,68 @@ class CompleteProfileModel extends FlutterFlowModel<CompleteProfileWidget> {
   // Model for webNav component.
   late WebNavModel webNavModel;
   // State field(s) for phonenumber widget.
-  FocusNode? phonenumberFocusNode1;
-  TextEditingController? phonenumberTextController1;
-  String? Function(BuildContext, String?)? phonenumberTextController1Validator;
-  // State field(s) for phonenumber widget.
-  FocusNode? phonenumberFocusNode2;
-  TextEditingController? phonenumberTextController2;
-  String? Function(BuildContext, String?)? phonenumberTextController2Validator;
+  FocusNode? phonenumberFocusNode;
+  TextEditingController? phonenumberTextController;
+  String? Function(BuildContext, String?)? phonenumberTextControllerValidator;
+  String? _phonenumberTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'gg4g5xcv' /* Field is required */,
+      );
+    }
+
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+    if (val.length > 15) {
+      return 'Maximum 15 characters allowed, currently ${val.length}.';
+    }
+
+    return null;
+  }
+
+  // State field(s) for address widget.
+  FocusNode? addressFocusNode;
+  TextEditingController? addressTextController;
+  String? Function(BuildContext, String?)? addressTextControllerValidator;
+  String? _addressTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'mo1t3ldy' /* Field is required */,
+      );
+    }
+
+    if (val.length < 5) {
+      return 'Requires at least 5 characters.';
+    }
+    if (val.length > 70) {
+      return 'Maximum 70 characters allowed, currently ${val.length}.';
+    }
+
+    return null;
+  }
+
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // State field(s) for CheckboxGroup widget.
-  FormFieldController<List<String>>? checkboxGroupValueController;
-  List<String>? get checkboxGroupValues => checkboxGroupValueController?.value;
-  set checkboxGroupValues(List<String>? v) =>
-      checkboxGroupValueController?.value = v;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
 
   @override
   void initState(BuildContext context) {
     webNavModel = createModel(context, () => WebNavModel());
+    phonenumberTextControllerValidator = _phonenumberTextControllerValidator;
+    addressTextControllerValidator = _addressTextControllerValidator;
   }
 
   @override
   void dispose() {
     webNavModel.dispose();
-    phonenumberFocusNode1?.dispose();
-    phonenumberTextController1?.dispose();
+    phonenumberFocusNode?.dispose();
+    phonenumberTextController?.dispose();
 
-    phonenumberFocusNode2?.dispose();
-    phonenumberTextController2?.dispose();
+    addressFocusNode?.dispose();
+    addressTextController?.dispose();
   }
 }

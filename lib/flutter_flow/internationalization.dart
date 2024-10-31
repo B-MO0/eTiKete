@@ -236,19 +236,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ms': '',
     },
     '8vot9bzj': {
-      'en': 'Events',
+      'en': ' Online Events',
       'id': 'Kontrak Baru',
       'ms': 'Kontrak Baru',
     },
     'saxskj92': {
-      'en': 'Tickets',
+      'en': 'Total Tickets Created',
       'id': 'Kontrak Kedaluwarsa',
       'ms': 'Kontrak Tamat',
-    },
-    '2wlrr5lg': {
-      'en': '0',
-      'id': '4300',
-      'ms': '4300',
     },
     'umh53lbz': {
       'en': 'Create new Event :',
@@ -343,12 +338,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    'gg4g5xcv': {
+    'ltun036t': {
       'en': 'Field is required',
       'id': '',
       'ms': '',
     },
-    '6ra05afg': {
+    'whsrgh3r': {
       'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
@@ -458,8 +453,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'id': '',
       'ms': '',
     },
-    '4liiy493': {
+    '2aw8y7we': {
       'en': 'I agree to the terms of service .',
+      'id': '',
+      'ms': '',
+    },
+    'gg4g5xcv': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    '6ra05afg': {
+      'en': 'Please choose an option from the dropdown',
+      'id': '',
+      'ms': '',
+    },
+    'mo1t3ldy': {
+      'en': 'Field is required',
+      'id': '',
+      'ms': '',
+    },
+    'l7nlv9nc': {
+      'en': 'Please choose an option from the dropdown',
       'id': '',
       'ms': '',
     },
