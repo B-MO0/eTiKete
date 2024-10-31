@@ -410,7 +410,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
-                                      'assets/images/Bmoo.png',
+                                      'assets/images/BmooBLUE.png',
                                       width: 548.0,
                                       height: 537.0,
                                       fit: BoxFit.cover,
@@ -422,93 +422,102 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 313.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 237.0,
-                                        height: 110.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 3.0,
+                                        shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(18.0),
                                         ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: CircularPercentIndicator(
-                                                percent: 0.999,
-                                                radius: 40.0,
-                                                lineWidth: 7.0,
-                                                animation: true,
-                                                animateFromLastPercent: true,
-                                                progressColor:
-                                                    Color(0xFF23A8FF),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                center: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '5pggrs0q' /* 100% */,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLargeFamily),
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'cab1wqo5' /* Completly
-Free */
-                                                  ,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                        child: Container(
+                                          width: 237.0,
+                                          height: 110.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(18.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: CircularPercentIndicator(
+                                                  percent: 0.999,
+                                                  radius: 40.0,
+                                                  lineWidth: 7.0,
+                                                  animation: true,
+                                                  animateFromLastPercent: true,
+                                                  progressColor:
+                                                      Color(0xFF23A8FF),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  center: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '5pggrs0q' /* 100% */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge
                                                         .override(
                                                           fontFamily:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMediumFamily,
-                                                          fontSize: 22.0,
+                                                                  .titleLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily),
+                                                                      .titleLargeFamily),
                                                         ),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'cab1wqo5' /* Completly
+Free */
+                                                    ,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 22.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

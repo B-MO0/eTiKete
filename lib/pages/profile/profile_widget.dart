@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/command_palette/command_palette_widget.dart';
+import '/components/delete_account/delete_account_widget.dart';
 import '/components/web_nav/web_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1120,7 +1121,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 10.0, 20.0, 10.0),
+                                                      10.0, 14.0, 20.0, 10.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -1426,9 +1427,34 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                         0.0),
                                                             child:
                                                                 FFButtonWidget(
-                                                              onPressed: () {
-                                                                print(
-                                                                    'Button pressed ...');
+                                                              onPressed:
+                                                                  () async {
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  barrierColor:
+                                                                      Color(
+                                                                          0x34000000),
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return WebViewAware(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            DeleteAccountWidget(),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
                                                               },
                                                               text: FFLocalizations
                                                                       .of(context)
